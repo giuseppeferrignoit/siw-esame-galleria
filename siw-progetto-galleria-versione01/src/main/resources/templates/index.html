@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
+	
+	
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div>
+    	<h1 th:text="#{header.index}">Welcome Page</h1>
+		<div>
+			<a th:href="@{/login}" th:text="#{index.login}"><strong>Accedi</strong></a>
+   		</div>
+		<div>
+			<a th:href="@{/register}" th:text="#{index.register}"><strong>Registrati</strong></a>
+   		</div>
+    </div>
+    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+</body>
+
+</html>

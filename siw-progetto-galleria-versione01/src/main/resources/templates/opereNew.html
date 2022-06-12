@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elenco delle opere - admin</title>
+		<link rel="stylesheet" href="../../elenchi.css"/>  
+	</head> 
+	
+	<body>
+	<header> 
+		<div id="titolo"><strong class="titolo">Gallerie d'arte : ELENCO DELLE OPERE ACCREDITATE</strong></div>
+	</header>
+	
+	<div class="sezione">	
+		<p>
+			<ul>
+				<li th:each="opera: ${opere}">
+					<p class="desc">
+						<span><strong>OPERA: </strong></span>
+						<span>
+							<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
+							   th:text="${opera.nome}">Opera</a>
+						</span>
+						
+
+						<span>
+							<a href="#" th:href="@{'/deleteOpera' + '/' + ${opera.id}}"><strong  class="elimina">ELIMINA</strong></a> 
+						</span>
+					</p>
+				</li>
+			</ul>
+		</p>
+	</div>
+	
+	<div class="sezione">
+		<a href="/"><strong class="top">Home</strong></a>
+	</div>
+	</body>
+
+</html>

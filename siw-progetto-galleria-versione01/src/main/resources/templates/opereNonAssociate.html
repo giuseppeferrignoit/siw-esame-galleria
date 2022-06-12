@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elenco delle opere non associate - admin</title>
+		<link rel="stylesheet" href="../../elenchi.css"/>  
+	</head> 
+	
+	<body>
+	<header> 
+		<div id="titolo"><strong class="titolo">Gallerie d'arte - ELENCO DELLE OPERE NON ASSOCIATE A UNA GALLERIA</strong></div>
+	</header>
+	
+	<div class="sezione">
+		<p>
+			<span><strong>Nome galleria: </strong></span>
+			<span>
+				<a href="galleria.html" th:href="@{'/galleria' + '/' + ${galleria.id}}"
+		   		th:text="${galleria.nome}">Galleria generica</a>
+		   	</span>
+		</p>
+		<p>
+		   	<span><strong>Descrizione galleria: </strong></span>
+		   	<span  th:text="${galleria.descrizione}">Descrizione galleria</span>
+		</p>
+		<p>
+			<span><strong>Città Galleria: </strong></span>
+			<span  th:text="${galleria.citta}">Città generica</span>
+		</p>
+	</div>
+	
+	<div class="sezione">	
+		<p>
+			<ul>
+				<li th:each="opera: ${opere}">
+					<p class="desc">
+						<span><strong>Nome opera: </strong></span>
+						<span>
+							<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
+							   th:text="${opera.nome}">Opera</a>
+						</span>
+						<span><strong> - Descrizione opera: </strong></span>
+						<span  th:text="${opera.descrizione}">Descrizione generica</span>
+						<span>
+							<a href="#" th:href="@{'/associaOpera' + '/' + ${opera.id}+ '/' + ${galleria.id}}"><strong  class="conferma">ASSOCIA ALLA GALLERIA</strong></a> 
+						</span>
+					</p>
+				</li>
+			</ul>
+		</p>
+	</div>
+	
+	<div class="sezione">
+			<a th:href="@{/home}"><strong class="top">Home</strong></a>
+	</div>
+	</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Dettagli opera - utente</title>
+		<link rel="stylesheet" href="/dettagli.css"/>    
+	</head> 
+
+	<body>
+	<header> 
+		<div id="titolo"><strong class="titolo">Gallerie d'arte - DETTAGLI DATI OPERA</strong></div>
+	</header>
+	
+	<section>
+			<div class="flex-container">
+			
+				<div class="flex-dati">
+					<div class="sezione">	
+						<p>
+							<span ><strong>Nome opera: </strong></span>
+							<span th:text="${opera.nome}">Opera generica</span>
+						</p>
+						<p>
+							<span><strong>Descrizione opera: </strong></span>
+							<span  th:text="${opera.descrizione}">Descrizione generica</span>
+						</p>
+						<p>
+							<span ><strong>Nome artista: </strong></span>
+							<span >
+								<a th:text="${opera.artista}" th:href="@{'/artistaUtente' + '/' + ${opera.artista.id}}">Artista</a>
+							</span>
+						</p>
+						<p th:if="${opera.gallery != null}">
+							<span ><strong>Galleria associata: </strong></span>
+							<span >
+								<a th:text="${opera.gallery.nome}" th:href="@{'/galleriaUtente' + '/' + ${opera.gallery.id}}">Galleria</a>
+							</span>
+						</p>
+						
+						
+						
+					</div>
+				
+				</div>
+				
+				<div class="flex-foto">
+					<div class="fotografia">
+						<img style="border: 3px solid green"  src="../quadro.jpg" alt="Image" height="300" width="360">
+					</div>
+				</div>
+				
+			</div>
+	</section>
+	
+	<div class="sezione">
+			<a th:href="@{/home}"><strong class="top">Home</strong></a>
+	</div>
+</html>

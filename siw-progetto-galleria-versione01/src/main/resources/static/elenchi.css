@@ -1,0 +1,102 @@
+@charset "ISO-8859-1";
+body {
+	margin: 10px;
+	background-color: white;
+	font-family: sans-serif;
+	color:  green;
+}
+
+#titolo {
+	height: 30px;
+	background-color: whitesmoke;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+strong.titolo {
+	color: darkblue;
+	font-size: x-large;
+	margin: 10px;
+}
+
+.desc {
+	background-color: lightblue;
+	font-size: medium;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 10px;
+}
+
+div.sezione {
+	font-size:medium;
+	text-align: justify;
+	background-color: whitesmoke;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 10px;
+}
+
+strong.modifica {
+	font-size:medium;
+	text-align: justify;
+	background-color: whitesmoke;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 3px;
+	color:blue;
+}
+
+strong.elimina {
+	font-size:medium;
+	text-align: justify;
+	background-color: whitesmoke;
+	border: 3px solid red;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 3px;
+	color:red;
+}
+
+strong.conferma {
+	font-size:medium;
+	text-align: justify;
+	background-color: whitesmoke;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 3px;
+	color: green;
+}
+
+strong.annulla {
+	font-size:medium;
+	text-align: justify;
+	background-color: whitesmoke;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 3px;
+	color: green;
+}
+
+strong.creazione {
+	font-size:large;
+	text-align: justify;
+	background-color: whitesmoke;
+	border: 3px solid darkgreen;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 3px;
+	color: darkblue;
+}
+
+strong.top {
+	font-size: 15px;
+	color: darkblue;
+}

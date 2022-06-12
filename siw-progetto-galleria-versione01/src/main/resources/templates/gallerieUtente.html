@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elenco delle Gallerie - utente</title>
+		<link rel="stylesheet" href="../elenchi.css"/>  
+	</head> 
+	
+	<body>
+	<header> 
+		<div id="titolo"><strong class="titolo">Gallerie d'arte - ELENCO DI TUTTE LE GALLERIE</strong></div>
+	</header>
+	
+	<div class="sezione">	
+		<p>
+			<ul>
+				<li th:each="galleria: ${gallerie}">
+					<p class="desc">
+						<span><strong>Nome galleria: </strong></span>
+						<span>
+							<a href="galleriaUtente.html" th:href="@{'/galleriaUtente' + '/' + ${galleria.id}}"
+					   		th:text="${galleria.nome}">Galleria generica</a>
+					   	</span>
+					   	<span><strong> - Descrizione galleria: </strong></span>
+					   	<span  th:text="${galleria.descrizione}">Descrizione galleria</span>
+					</p>
+				</li>	   	
+			</ul>
+		</p>
+	</div>
+	
+	<div class="sezione">
+			<a th:href="@{/home}"><strong class="top">Home</strong></a>
+	</div>
+	
+	</body>
+
+</html>

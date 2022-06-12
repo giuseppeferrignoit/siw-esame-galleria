@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cancellazione Artista - admin</title>
+		<link rel="stylesheet" href="../elenchi.css"/>  
+	</head>
+	
+	<body>	
+		<header> 
+			<div id="titolo"><strong class="titolo">Gallerie d'arte : CANCELLAZIONE ARTISTA</strong></div>
+		</header>
+			
+		<div class="sezione">	
+			<h4>Sei sicuro di voler eliminare l'artista
+				<span th:text="${artista.nome}">Nome</span>
+				<span th:text="${artista.cognome}">Cognome</span>
+				<span>e tutte le sue opere?</span>
+				
+				<ul th:if="${!artista.opere.empty}">
+					<li th:each="opera: ${artista.opere}">
+						<p class="desc">
+							<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
+					   		th:text="${opera.nome}">Opera</a>
+						</p>
+					</li>
+				</ul>
+				<div class="sezione">	
+					<p >
+						<a th:href="@{'/confermaDeleteArtista' + '/' + ${artista.id}}"><strong class="conferma">CONFERMA</strong></a>
+						<a th:href="@{'/artisti'}"><strong class="annulla">ANNULLA</strong></a>
+					</p>
+				</div>
+			</h4>
+		</div>
+		
+		<div class="sezione">
+			<a th:href="@{/home}"><strong class="top">Home</strong></a>
+		</div>
+	</body>
+	</body>
+</html>

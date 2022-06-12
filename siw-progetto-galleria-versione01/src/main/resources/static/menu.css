@@ -1,0 +1,96 @@
+@charset "ISO-8859-1";
+body {
+	margin: 10px;
+	background-color:lightgrey ;
+	font-family: sans-serif;
+	color:  darkblue;
+}
+
+#titolo {
+	height: 30px;
+	background-color: whitesmoke;
+	border: 5px solid green;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+strong.titolo {
+	color: darkblue;
+	font-size: x-large;
+	margin: 10px;
+}
+
+.itemMain {
+	background-color:lightgrey ;
+	font-size: x-large;
+	border: 3px solid green;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 50px;
+	text-align: center;
+	width: 85%;
+}
+
+.itemTop {
+	background-color: lightblue;
+	font-size: medium;
+	border: 3px solid green;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 10px;
+	text-align: center;
+}
+
+.exfotografia {
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+strong.item {
+	font-size: 25px;
+	color: darkblue;
+}
+
+strong.top {
+	font-size: 15px;
+	color: darkblue;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+	height: 330px;
+	margin: 10px;
+	margin-bottom: 15px;
+}
+
+div.flex-dati {
+	background-color: lightblue;
+	border: 3px solid forestgreen;
+	border-radius: 10px;
+	width: calc(70% - 5px);
+	height: 320px;
+	font-size: large;
+	padding: 5px;
+}
+
+div.flex-foto {
+	background-color: lightblue;
+	border: 3px solid forestgreen;
+	border-radius: 10px;
+	width: calc(30% - 5px);
+	height: 320px;
+	padding: 5px;
+}
+
+.fotografia {
+	display: block;
+	padding: 5px;
+	text-align: center;
+	max-width: 100%;
+	max-height: 100%;
+}
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>  
+	    <meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1"/>
+	    <title>Galleria d'arte - Operazioni - Utente</title>
+		<link rel="stylesheet" href="menu.css"/>
+	</head> 
+	
+	 
+	<body> 
+	
+		<header> 
+			<div id="titolo"><strong class="titolo">GALLERIE D'ARTE: GESTIONE DELLE OPERAZIONI - UTENTE</strong></div>
+			<p><a name="linkAlTop"/></p>
+		</header>
+		
+		<section>
+			<div class="flex-container">
+				<div class="flex-dati">
+					<div class="itemMain">
+						<a th:href="@{/artistiUtente}" href="#">Consulta gli artisti accreditati</a>
+					</div>
+				</div>
+				<div class="flex-foto">
+					<div class="fotografia">
+						<img style="border: 3px solid green"  src="../artista.jpg" alt="Image" height="300" width="360">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="flex-container">
+				<div class="flex-dati">
+					<div class="itemMain">
+						<a th:href="@{/opereUtente}" href="#">Consulta le opere accreditate</a>
+					</div>
+				</div>
+				<div class="flex-foto">
+					<div class="fotografia">
+						<img style="border: 3px solid green"  src="../quadro.jpg" alt="Image" height="300" width="360">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="flex-container">
+				<div class="flex-dati">
+					<div class="itemMain">
+						<a th:href="@{/gallerieUtente}" href="#">Consulta le gallerie accreditate</a>
+					</div>
+				</div>
+				<div class="flex-foto">
+					<div class="fotografia">
+						<img style="border: 3px solid green"  src="../galleriaArte.jpg" alt="Image" height="300" width="360">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="flex-container">
+				<div class="flex-dati">
+					<div class="itemMain">
+						<a th:href="@{/clientiUtente}" href="#">Consulta i clienti accreditati</a>
+					</div>
+				</div>
+				<div class="flex-foto">
+					<div class="fotografia">
+						<img style="border: 3px solid green"  src="../cliente.jpg" alt="Image" height="300" width="360">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+   		    
+   		<footer class="itemTop">
+			<a href="#linkAlTop"><strong class="top">Go to the top</strong></a> 
+		</footer>
+		
+		<div class="itemTop">
+			<a th:href="@{/logout}"><strong class="top">Logout</strong></a>
+   		</div>
+
+	</body>
+</html>
