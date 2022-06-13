@@ -17,7 +17,7 @@
 				<ul id="elenco">
 					<li th:each="galleria: ${gallerie}">
 						<span>
-							<a th:href="@{'/galleriaUtente' + '/' + ${galleria.id}}"
+							<a th:href="@{'/galleria' + '/' + ${galleria.id}}"
 					   		th:text="${galleria.nome}">Galleria</a>
 					   	</span>
 					   	<span>

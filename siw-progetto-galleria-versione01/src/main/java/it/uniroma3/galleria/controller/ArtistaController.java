@@ -57,7 +57,7 @@ public class ArtistaController {
 
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla pagina di visualizzazione dati inseriti
-			return "artista.html"; 
+			return "admin/artista.html"; 
 		}
 		else {
 			model.addAttribute("artista", artista);
@@ -79,7 +79,7 @@ public class ArtistaController {
 	@GetMapping("/deleteArtista/{id}")
 	public String deleteArtista(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("artista", this.artistaService.findById(id));
-		return "deleteArtista.html";
+		return "admin/deleteArtista.html";
 	}
 
 	// METODI GET
@@ -91,7 +91,7 @@ public class ArtistaController {
 		Artista artista = artistaService.findById(id);
 		model.addAttribute("artista", artista);
 		// ritorna la pagina con i dati dell'entità richiesta
-		return "artista.html";
+		return "admin/artista.html";
 	}
 
 	// richiede un singolo artista tramite id per l'utente semplice
@@ -101,7 +101,7 @@ public class ArtistaController {
 		Artista artista = artistaService.findById(id);
 		model.addAttribute("artista", artista);
 		// ritorna la pagina con i dati dell'entità richiesta
-		return "artistaUtente.html";
+		return "artista.html";
 	}
 
 	// richiede tutti gli Artisti, non c'è id
@@ -132,7 +132,7 @@ public class ArtistaController {
 		Artista artista = artistaService.findById(id);
 		model.addAttribute("artista", artista);
 		model.addAttribute("opere", artista.getOpere());
-		return "opere.html";
+		return "admin/opere.html";
 	}
 
 	//richiede tutti le opere dell'artista passato nel path per utenti semplici
@@ -141,6 +141,6 @@ public class ArtistaController {
 		Artista artista = artistaService.findById(id);
 		model.addAttribute("artista", artista);
 		model.addAttribute("opere", artista.getOpere());
-		return "opereUtente.html";
+		return "opere.html";
 	}
 }

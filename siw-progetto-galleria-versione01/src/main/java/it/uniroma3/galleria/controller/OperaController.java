@@ -90,7 +90,7 @@ public class OperaController {
 	@GetMapping("/deleteOpera/{id}")
 	public String deleteOpera(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("opera", this.operaService.findById(id));
-		return "deleteOpera.html";
+		return "admin/deleteOpera.html";
 	}
 
 	// METODI GET
@@ -101,14 +101,6 @@ public class OperaController {
 		Opera opera = operaService.findById(id);
 		model.addAttribute("opera", opera);
 		return "opera.html"; // ritorna la pagina con i dati dell'entità richiesta
-	}
-
-	// richiede una singola opera tramite id, per l'utente semplice
-	@GetMapping("/operaUtente/{id}")
-	public String getOperaUtente(@PathVariable("id") Long id, Model model) { // id è una variabile associata al path
-		Opera opera = operaService.findById(id);
-		model.addAttribute("opera", opera);
-		return "operaUtente.html"; // ritorna la pagina con i dati dell'entità richiesta
 	}
 
 	// richiede tutte le opere, non c'è id

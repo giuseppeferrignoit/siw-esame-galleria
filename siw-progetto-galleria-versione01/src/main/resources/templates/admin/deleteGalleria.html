@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="ISO-8859-1" />
+	    <title>Elimina galleria</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	
+	<body>	
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div><h3>Sei sicuro di voler eliminare la galleria 
+					<span th:text="${galleria.nome}">Nome galleria </span><span>(</span>
+					<span th:text="${galleria.descrizione}">Descrizione </span><span> )</span>
+					<span>le cui opere non verranno cancellate?</span></h3></div>	
+				<ul th:if="${!galleria.opere.empty}" id="elenco">
+					<li th:each="opera: ${galleria.opere}">
+						<span>
+							<a th:href="@{'/opera' + '/' + ${opera.id}}"
+							th:text="${opera.nome}">Opera</a>
+					   	</span>
+					</li>	   	
+				</ul>
+				<div id="buttons">
+					<div class="bottone">
+						<a th:href="@{'/confermaDeleteGalleria' + '/' + ${galleria.id}}"><strong>CONFERMA</strong></a>
+					</div>
+					<div class="bottone">
+						<a th:href="@{'/gallerie'}"><strong>ANNULLA</strong></a>
+					</div>
+				</div>
+			</div>
+			<img src="/images/galleria1.jpg"></img>
+		</div>
+	</body>
+</html>

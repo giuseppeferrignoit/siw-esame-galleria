@@ -61,6 +61,13 @@ public class OperaService {
 		return opere;
 	}
 	
+	public List<Opera> findAllByGalleriaArte(GalleriaArte galleria) {
+		List<Opera> opere = new ArrayList<Opera>();
+		for(Opera opera : operaRepository.findAllByGallery(galleria))
+			opere.add(opera);
+		return opere;
+	}
+	
 	// Metodo che risponde ad una validazione del Validator
 	public boolean alreadyExists(Opera opera) {
 		//return operaRepository.existsByNome(opera.getNome());
@@ -85,4 +92,16 @@ public class OperaService {
 		return opere;
 	}
 	*/
+
+	public void removeGalleriaFromOpere(GalleriaArte galleria) {
+		List<Opera> opere = this.findAll();
+		for(Opera opera : opere) {
+			if(opera.getGallery() != null) {
+				if(opera.getGallery().equals(galleria)) {
+					opera.setGallery(null);
+					this.save(opera, opera.getArtista());
+				}
+			}
+		}
+	}
 }

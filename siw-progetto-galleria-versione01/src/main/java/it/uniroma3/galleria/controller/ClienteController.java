@@ -77,7 +77,7 @@ public class ClienteController {
 	@GetMapping("/deleteCliente/{id}")
 	public String deleteCliente(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("cliente", this.clienteService.findById(id));
-		return "deleteCliente.html";
+		return "admin/deleteCliente.html";
 	}
 
 	// METODI GET
@@ -90,16 +90,6 @@ public class ClienteController {
 		model.addAttribute("cliente", cliente);
 		// ritorna la pagina con i dati dell'entità richiesta
 		return "cliente.html";
-	}
-
-	// richiede un singolo cliente tramite id per l'utente semplice
-	@GetMapping("/clienteUtente/{id}")
-	public String getClienteUtente(@PathVariable("id")Long id, Model model) {
-		// id è una variabile associata al path
-		Cliente cliente = clienteService.findById(id);
-		model.addAttribute("cliente", cliente);
-		// ritorna la pagina con i dati dell'entità richiesta
-		return "clienteUtente.html";
 	}
 
 	// richiede tutti i Clienti, non c'è id

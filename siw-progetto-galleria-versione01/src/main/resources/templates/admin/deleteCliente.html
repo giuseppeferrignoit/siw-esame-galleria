@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="ISO-8859-1" />
+	    <title>Elimina cliente</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">  
+	</head>
+	
+	<body>	
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div><h3>Sei sicuro di voler eliminare il cliente
+					<span th:text="${cliente.nome}">Nome cliente</span>
+					<span th:text="${cliente.cognome}">Cognome cliente</span>?</h3></div>
+				<div id="buttons">
+					<div class="bottone">
+						<a th:href="@{'/confermaDeleteCliente' + '/' + ${cliente.id}}"><strong>CONFERMA</strong></a>
+					</div>
+					<div class="bottone">
+						<a th:href="@{'/clienti'}"><strong>ANNULLA</strong></a>
+					</div>
+				</div>
+			</div>
+			<img src="/images/clienti2.jpg"></img>
+		</div>	
+	</body>
+</html>

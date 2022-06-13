@@ -45,7 +45,7 @@ img {
 	padding: 3px;
 	border-style: solid;
 	color: white;
-	background-color: #ad043d;
+	background-color: #1A7597;
 	border-radius: 3px;
 	margin: 10px 0;
 }
@@ -53,4 +53,19 @@ img {
 #button:hover {
 	color: #1A7597;
 	background-color: white;
+}
+
+#buttons {
+	display: flex;
+	flex-direction: row;
+}
+
+.bottone {
+	margin: 15px 15px 0px 0px;
+	font-size: 18px;
+	padding: 3px;
+	border-style: solid;
+	color: white;
+	border-color: #1A7597;
+	border-radius: 3px;
 }

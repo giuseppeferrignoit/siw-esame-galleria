@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import it.uniroma3.galleria.model.Cliente;
 import it.uniroma3.galleria.model.GalleriaArte;
 import it.uniroma3.galleria.model.Opera;
 import it.uniroma3.galleria.service.ClienteService;
@@ -64,7 +63,7 @@ public class GalleriaArteController {
 
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla pagina di visualizzazione dati inseriti
-			return "galleria.html"; 
+			return "admin/galleria.html"; 
 		}
 		else {
 			model.addAttribute("galleria", galleria);
@@ -84,7 +83,7 @@ public class GalleriaArteController {
 		this.galleriaService.addOpera(galleria, opera);
 		model.addAttribute("galleria", galleria);
 		model.addAttribute("opereAssenti", this.galleriaService.findOpereNotInGalleria(galleria));
-		return "galleria.html";
+		return "admin/galleria.html";
 
 	}
 
@@ -105,7 +104,7 @@ public class GalleriaArteController {
 		this.galleriaService.addOpera(galleria, opera);
 		this.operaService.setGalleria(galleria, opera);
 		model.addAttribute("galleria", galleria);
-		model.addAttribute("opere", operaService.findAll());
+		model.addAttribute("opere", operaService.findAllByGalleriaArte(galleria));
 		return "opere.html";
 	}
 
@@ -146,6 +145,7 @@ public class GalleriaArteController {
 
 	@GetMapping("/confermaDeleteGalleria/{id}")
 	public String confermaDeleteGalleria(@PathVariable("id") Long id, Model model) {
+		this.operaService.removeGalleriaFromOpere(this.galleriaService.findById(id));
 		this.galleriaService.deleteById(id);
 		model.addAttribute("gallerie", this.galleriaService.findAll());
 		return "admin/gallerie.html";
@@ -154,7 +154,7 @@ public class GalleriaArteController {
 	@GetMapping("/deleteGalleria/{id}")
 	public String deleteGalleria(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("galleria", this.galleriaService.findById(id));
-		return "deleteGalleria.html";
+		return "admin/deleteGalleria.html";
 	}
 
 	// METODI GET
@@ -166,7 +166,7 @@ public class GalleriaArteController {
 		GalleriaArte galleria = galleriaService.findById(id);
 		model.addAttribute("galleria", galleria);
 		// ritorna la pagina con i dati dell'entità richiesta
-		return "galleria.html";
+		return "admin/galleria.html";
 	}
 
 	// richiede una singola galleria tramite id per l'utente semplice
@@ -176,7 +176,7 @@ public class GalleriaArteController {
 		GalleriaArte galleria = galleriaService.findById(id);
 		model.addAttribute("galleria", galleria);
 		// ritorna la pagina con i dati dell'entità richiesta
-		return "galleriaUtente.html";
+		return "galleria.html";
 	}
 
 	// richiede tutte le Gallerie, non c'è id
@@ -207,7 +207,7 @@ public class GalleriaArteController {
 		GalleriaArte galleria = galleriaService.findById(id);
 		model.addAttribute("opere", galleria.getOpere());
 		model.addAttribute("galleria", galleria);
-		return "opereGalleria.html";
+		return "admin/opere.html";
 	}
 
 	//richiede tutte le opere della galleria  passata nel path per utenti semplici
@@ -216,7 +216,7 @@ public class GalleriaArteController {
 		GalleriaArte galleria = galleriaService.findById(id);
 		model.addAttribute("opere", galleria.getOpere());
 		model.addAttribute("galleria", galleria);
-		return "opereUtente.html";
+		return "opere.html";
 	}
 }
 

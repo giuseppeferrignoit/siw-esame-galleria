@@ -17,7 +17,7 @@
 				<ul id="elenco">
 					<li th:each="cliente: ${clienti}">
 						<span>
-							<a th:href="@{'/clienteUtente' + '/' + ${cliente.id}}"
+							<a th:href="@{'/cliente' + '/' + ${cliente.id}}"
 							th:text="${cliente.nome} + ' ' + ${cliente.cognome}">Rossi</a>
 					   	</span>
 					</li>	   	

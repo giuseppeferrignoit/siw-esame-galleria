@@ -96,5 +96,6 @@ public class Opera {
 		Opera that = (Opera)obj;
 		return this.nome.equals(that.getNome());
 	}
+
 	
 }

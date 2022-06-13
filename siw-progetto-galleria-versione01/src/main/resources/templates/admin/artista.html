@@ -10,7 +10,7 @@
 	</head> 
 
 	<body>
-		<header th:replace="fragments/base.html :: intestazione"></header>
+	<header th:replace="fragments/base.html :: intestazione"></header>
 		<div id="sfondo-artista"></div>
 		<div id="section">
 			<div class="section-item">
@@ -23,8 +23,13 @@
 			</div>
 			<div class="section-item" id="buttons">
 				<div class="button">
-					<p><a th:href="@{'/artistaUtente' + '/' + ${artista.id} + '/' + 
-								'opereUtente'}" href="#"><strong class="conferma">Consulta Opere dell'artista</strong></a>
+					<p><a th:href="@{'/artista' + '/' + ${artista.id} + '/' + 
+								'nuovaOpera'}" href="#"><strong class="conferma">Inserisci nuova Opera</strong></a>
+					</p>
+				</div>
+				<div class="button">
+					<p><a th:href="@{'/artista' + '/' + ${artista.id} + '/' + 
+								'opere'}" href="#"><strong class="conferma">Consulta Opere dell'artista</strong></a>
 					</p>
 				</div>
 			</div>
