@@ -84,7 +84,7 @@ public class OperaController {
 	public String confermaDeleteOpera(@PathVariable("id") Long id, Model model) {
 		this.operaService.deleteById(id);
 		model.addAttribute("opere", this.operaService.findAll());
-		return "opere.html";
+		return "admin/opere.html";
 	}
 
 	@GetMapping("/deleteOpera/{id}")
@@ -116,7 +116,7 @@ public class OperaController {
 	public String getOpere(Model model) {
 		List<Opera> opere = operaService.findAll();
 		model.addAttribute("opere", opere);
-		return "opere.html";
+		return "admin/opere.html";
 	}
 
 	// richiede tutte le opere per l'utente semplice, non c'è id
@@ -124,7 +124,7 @@ public class OperaController {
 	public String getOpereUtente(Model model) {
 		List<Opera> opere = operaService.findAll();
 		model.addAttribute("opere", opere);
-		return "opereUtente.html";
+		return "opere.html";
 	}
 
 	// crea una nuova opera associata all'artista passato nel path
@@ -133,14 +133,14 @@ public class OperaController {
 		Opera opera = new Opera();
 		model.addAttribute("artista", artistaService.findById(idArtista));
 		model.addAttribute("opera", opera);
-		return "operaForm.html";
+		return "admin/operaForm.html";
 	}
 
 	//crea una nuova opera
 	@GetMapping("/newOpera")
 	public String createNewOpera(Model model) {
 		model.addAttribute("artisti", artistaService.findAll());
-		return "newOpera.html";
+		return "admin/newOpera.html";
 	}
 	/*
 

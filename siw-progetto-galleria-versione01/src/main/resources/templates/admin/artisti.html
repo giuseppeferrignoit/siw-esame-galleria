@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" />
+	    <title>Artisti</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+	</head> 
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div><h1>I nostri artisti</h1></div>	
+				<ul id="elenco">
+					<li th:each="artista: ${artisti}">
+						<span>
+							<a th:href="@{'/artistaUtente' + '/' + ${artista.id}}"
+							th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
+					   	</span>
+					   	<span>
+					   		<a th:href="@{'/deleteArtista' +'/' + ${artista.id}}"><strong>ELIMINA</strong></a>
+					   	</span>
+					</li>	   	
+				</ul>
+			</div>
+			<img src="/images/vangogh-autoritratto.jpg"></img>
+		</div>
+	</body>
+
+</html>

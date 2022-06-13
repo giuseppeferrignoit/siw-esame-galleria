@@ -73,7 +73,7 @@ public class ArtistaController {
 	public String confermaDeleteArtista(@PathVariable("id") Long id, Model model) {
 		this.artistaService.deleteById(id);
 		model.addAttribute("artisti", this.artistaService.findAll());
-		return "artisti.html";
+		return "admin/artisti.html";
 	}
 
 	@GetMapping("/deleteArtista/{id}")
@@ -109,7 +109,7 @@ public class ArtistaController {
 	public String getArtisti(Model model) {
 		List<Artista> artisti = artistaService.findAll();
 		model.addAttribute("artisti", artisti);
-		return "artisti.html";
+		return "admin/artisti.html";
 	}
 
 	// richiede tutti gli artisti per l'utente semplice, non c'è id
@@ -117,13 +117,13 @@ public class ArtistaController {
 	public String getArtistiUtente(Model model) {
 		List<Artista> artisti = artistaService.findAll();
 		model.addAttribute("artisti", artisti);
-		return "artistiUtente.html";
+		return "artisti.html";
 	}
 
 	@GetMapping("/artistaForm")
 	public String artistaForm(Model model) {
 		model.addAttribute("artista", new Artista());
-		return "artistaForm.html";
+		return "admin/artistaForm.html";
 	}
 
 	//richiede tutti le opere dell'artista passato nel path

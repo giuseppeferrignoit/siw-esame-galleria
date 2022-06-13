@@ -2,99 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	
 	<head>  
-	    <meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1"/>
-	    <title>Galleria d'arte - Operazioni - Admin</title>
-		<link rel="stylesheet" href="menu.css"/>
+	    <meta charset="ISO-8859-1" />
+	    <title>Galleria</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/home.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head> 
 	
-	 
-	<body> 
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		
+		<div class="section">
+			<div class="images-row">
+				<div class="image-item">
+					<img src="../images/galleria2.jpg" alt="img1">
+					<a th:href="@{/gallerie}">Consulta le gallerie</a>
+					<a th:href="@{/galleriaForm}" href="#">Inserimento nuova galleria d'arte</a>
+				</div>
+				<div class="image-item">
+					<img src="../images/fridakahlo-autoritratto.jpg" alt="img2">
+					<a th:href="@{/artisti}">Consulta gli artisti</a>
+					<a th:href="@{/artistaForm}" href="#">Inserimento nuovo artista</a>
+				</div>
+			</div>
+			<div class="images-row">
+				<div class="image-item">
+					<img src="../images/magritte-gliamanti.jpg" alt="img3">
+					<a th:href="@{/opere}">Consulta le opere</a>
+					<a th:href="@{/newOpera}" href="#">Inserimento nuova opera</a>
+				</div>
+				<div class="image-item">
+					<img src="../images/clienti.jpg" alt="img4">
+					<a th:href="@{/clienti}">Consulta i clienti accreditati</a>
+					<a th:href="@{/clienteForm}">Inserimento nuovo cliente</a>
+				</div>
+			</div>
+		</div>
+		
+		<a name="contact"><div class="contacts">
+			<div id="text-section">
+				<h2>Contatti</h2>
+				<h3>Non esitare a contattarci</h3>
+				<div>Per richiedere un preventivo scrivi al nostro indirizzo di posta elettronica: preventivi@galleriarte.it</div>
+				<div>Oppure chiama il numero +39 123 456 7890</div>
+			</div>
+		</div></a>
 	
-		<header> 
-			<div id="titolo"><strong class="titolo">GALLERIE D'ARTE: GESTIONE DELLE OPERAZIONI</strong></div>
-			<p><a name="linkAlTop"/></p>
-		</header>
-		
-		<section>
-			<div class="flex-container">
-				<div class="flex-dati">
-					<div class="itemMain">
-						<a th:href="@{/artistaForm}" href="#">Inserimento nuovo artista</a>
-					</div>
-					<div class="itemMain">
-						<a th:href="@{/artisti}" href="#">Consulta gli artisti accreditati</a>
-					</div>
-				</div>
-				<div class="flex-foto">
-					<div class="fotografia">
-						<img style="border: 3px solid green"  src="../artista.jpg" alt="Image" height="300" width="360">
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section>
-			<div class="flex-container">
-				<div class="flex-dati">
-					<div class="itemMain">
-						<a th:href="@{/newOpera}" href="#">Inserimento nuova opera</a>
-					</div>
-					<div class="itemMain">
-						<a th:href="@{/opere}" href="#">Consulta le opere accreditate</a>
-					</div>
-				</div>
-				<div class="flex-foto">
-					<div class="fotografia">
-						<img style="border: 3px solid green"  src="../quadro.jpg" alt="Image" height="300" width="360">
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section>
-			<div class="flex-container">
-				<div class="flex-dati">
-					<div class="itemMain">
-						<a th:href="@{/galleriaForm}" href="#">Inserimento nuova galleria d'arte</a>
-					</div>
-					<div class="itemMain">
-						<a th:href="@{/gallerie}" href="#">Consulta le gallerie accreditate</a>
-					</div>
-				</div>
-				<div class="flex-foto">
-					<div class="fotografia">
-						<img style="border: 3px solid green"  src="../galleriaArte.jpg" alt="Image" height="300" width="360">
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section>
-			<div class="flex-container">
-				<div class="flex-dati">
-					<div class="itemMain">
-						<a th:href="@{/clienteForm}" href="#">Inserimento nuovo cliente</a>
-					</div>
-					<div class="itemMain">
-						<a th:href="@{/clienti}" href="#">Consulta i clienti accreditati</a>
-					</div>
-				</div>
-				<div class="flex-foto">
-					<div class="fotografia">
-						<img style="border: 3px solid green"  src="../cliente.jpg" alt="Image" height="300" width="360">
-					</div>
-				</div>
-			</div>
-		</section>
-		
-   		    
-   		<footer class="itemTop">
-			<a href="#linkAlTop"><strong class="top">Go to the top</strong></a> 
-		</footer>
-		
-		<div class="itemTop">
-			<a th:href="@{/logout}"><strong class="top">Logout</strong></a>
-   		</div>
-
 	</body>
 </html>

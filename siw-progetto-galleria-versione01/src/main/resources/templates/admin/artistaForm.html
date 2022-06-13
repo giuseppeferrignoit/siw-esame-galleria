@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="ISO-8859-1" />
+	    <title>Inserimento artista</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/form.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+	</head>
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<div th:replace="fragments/base.html :: sfondo1"></div>
+		<div id="text">
+			<form id="form" th:action="@{/artista}" method="POST" th:object="${artista}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+		    		<p 	th:each="err : ${#fields.globalErrors()}" 
+		  				th:text="${err}">ERRORE GENERICO</p> 
+		  		</div>
+				<div class="form-item">
+					<div>Nome Artista: </div>
+					<div><span><input type="text" th:field="*{nome}"/></span>
+					<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></div>
+				</div>
+				<div class="form-item">
+					<div>Cognome Artista: </div>
+					<div><span><input type="text" th:field="*{cognome}"/></span>		
+					<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span></div>
+				</div>
+				<div class="form-item">
+					<div>Nazionalita': </div>
+					<div><span><input type="text" th:field="*{nazionalita}"/></span>		
+					<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span></div>
+				</div>
+				<div class="button">
+					<button type="submit"><strong>Conferma</strong></button>
+				</div>
+			</form>
+		</div>					
+	</body>
+
+</html>

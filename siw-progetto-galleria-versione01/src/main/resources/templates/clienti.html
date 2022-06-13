@@ -2,50 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head>  	
-		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-		<title>Elenco dei clienti - admin</title>
-		<link rel="stylesheet" href="../elenchi.css"/>  
+		<meta charset="ISO-8859-1" />
+	    <title>Clienti</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
 	</head> 
 	
 	<body>
-	<header> 
-		<div id="titolo"><strong class="titolo">Gallerie d'arte - ELENCO DEI CLIENTI ACCREDITATI</strong></div>
-	</header>
-	
-	<div th:if="${!clienti.empty}">
-	<div class="sezione">	
-		<p>
-			<ul>
-				<li th:each="cliente: ${clienti}">
-					<p class="desc">
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">	
+			<div id="section">
+				<div><h1>I nostri clienti</h1></div>
+				<ul id="elenco">
+					<li th:each="cliente: ${clienti}">
 						<span>
-							<a href="cliente.html" th:href="@{'/cliente' + '/' + ${cliente.id}}"
-					   		th:text="${cliente.nome} + ' ' + ${cliente.cognome}">Paolo Rossi</a>
+							<a th:href="@{'/clienteUtente' + '/' + ${cliente.id}}"
+							th:text="${cliente.nome} + ' ' + ${cliente.cognome}">Rossi</a>
 					   	</span>
-						<span>
-							<a href="#" th:href="@{'/deleteCliente' +'/' + ${cliente.id}}"><strong class="elimina">ELIMINA</strong></a> 
-						</span>
-					</p>
-				</li>	   	
-			</ul>
-		</p>
-	</div>
-	</div>
-	
-	<div class="sezione" th:unless="${!clienti.empty}">
-		<h4>NON CI SONO CLIENTI ANCORA CENSITI! CENSISCINE UNO</h4>
-	</div>
-			
-	<div class="sezione">	
-		<h4>CREA UN NUOVO CLIENTE</h4>
-		<div class="itemMain">
-			<a th:href="@{/clienteForm}" href="#"><strong class="creazione">Inserimento nuovo cliente</strong></a>
+					</li>	   	
+				</ul>
+			</div>
+			<img src="/images/clienti2.jpg"></img>
 		</div>
-	</div>
-	 
-	<div class="sezione">
-			<a th:href="@{/home}"><strong class="top">Home</strong></a>
-	</div>
 	</body>
 
 </html>

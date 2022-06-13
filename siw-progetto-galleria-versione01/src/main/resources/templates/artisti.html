@@ -2,56 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head>  	
-		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-		<title>Elenco degli artisti - vista admin</title>
-		<link rel="stylesheet" href="../elenchi.css"/>  
+		<meta charset="ISO-8859-1" />
+	    <title>Artisti</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
 	</head> 
 	
 	<body>
-	<header> 
-		<div id="titolo"><strong class="titolo">Gallerie d'arte - ELENCO DEGLI ARTISTI ACCREDITATI</strong></div>
-	</header>
-	
-	<div th:if="${!artisti.empty}">
-	<div class="sezione">	
-		<p>
-			<ul>
-				<li th:each="artista: ${artisti}">
-					<p class="desc">
-						<span><strong> - Nome artista: </strong></span>
-						<span  th:text="${artista.nome}">Paolo</span>
-					
-						<span><strong>Cognome artista: </strong></span>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div><h1>I nostri artisti</h1></div>	
+				<ul id="elenco">
+					<li th:each="artista: ${artisti}">
 						<span>
-							<a href="artista.html" th:href="@{'/artista' + '/' + ${artista.id}}"
-							th:text="${artista.cognome}">Rossi</a>
+							<a th:href="@{'/artistaUtente' + '/' + ${artista.id}}"
+							th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
 					   	</span>
-					   	
-						<span><strong> - Nazionalità artista: </strong></span>
-						<span  th:text="${artista.nazionalita}">Generica</span>
-						<span>
-							<a href="#" th:href="@{'/deleteArtista' +'/' + ${artista.id}}"><strong class="elimina">ELIMINA</strong></a> 
-						</span>
-					</p>
-				</li>	   	
-			</ul>
-		</p>
-	</div>
-	</div>
-	<div class="sezione" th:unless="${!artisti.empty}">
-		<h4>NON CI SONO ARTISTI ANCORA CENSITI! CENSISCINE UNO</h4>
-	</div>
-			
-	<div class="sezione">	
-		<h4>CREA UN NUOVO ARTISTA</h4>
-		<div class="itemMain">
-			<a th:href="@{/artistaForm}" href="#"><strong class="creazione">Inserimento nuovo artista</strong></a>
+					</li>	   	
+				</ul>
+			</div>
+			<img src="/images/vangogh-autoritratto.jpg"></img>
 		</div>
-	</div>
-	
-	<div class="sezione">
-			<a th:href="@{/home}"><strong class="top">Home</strong></a>
-	</div>
 	</body>
 
 </html>

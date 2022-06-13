@@ -148,7 +148,7 @@ public class GalleriaArteController {
 	public String confermaDeleteGalleria(@PathVariable("id") Long id, Model model) {
 		this.galleriaService.deleteById(id);
 		model.addAttribute("gallerie", this.galleriaService.findAll());
-		return "gallerie.html";
+		return "admin/gallerie.html";
 	}
 
 	@GetMapping("/deleteGalleria/{id}")
@@ -184,7 +184,7 @@ public class GalleriaArteController {
 	public String getGalleria(Model model) {
 		List<GalleriaArte> gallerie = galleriaService.findAll();
 		model.addAttribute("gallerie", gallerie);
-		return "gallerie.html";
+		return "admin/gallerie.html";
 	}
 
 	// richiede tutti gli artisti per l'utente semplice, non c'è id
@@ -192,13 +192,13 @@ public class GalleriaArteController {
 	public String getGallerieUtente(Model model) {
 		List<GalleriaArte> gallerie = galleriaService.findAll();
 		model.addAttribute("gallerie", gallerie);
-		return "gallerieUtente.html";
+		return "gallerie.html";
 	}
 
 	@GetMapping("/galleriaForm")
 	public String galleriaForm(Model model) {
 		model.addAttribute("galleria", new GalleriaArte());
-		return "galleriaForm.html";
+		return "admin/galleriaForm.html";
 	}
 
 	//richiede tutte le opere della galleria passata nel path

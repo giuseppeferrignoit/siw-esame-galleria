@@ -1,0 +1,56 @@
+#container {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 40px 0;
+	width: 100%;
+}
+
+#section {
+	padding: 80px 90px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+img {
+	width: 30%;
+	position: relative;
+	border-radius: 7px;
+	margin: 50px;
+}
+
+#elenco {
+	font-size: 18px;
+}
+
+#select {
+	font-size: smaller;
+	color: #1A7597;
+}
+
+#select:hover {
+	color: black;
+	font-weight: bold;
+}
+
+.section-item {
+	margin: 20px 0;
+}
+
+#button {
+	position: relative;
+	font-size: 18px;
+	padding: 3px;
+	border-style: solid;
+	color: white;
+	background-color: #ad043d;
+	border-radius: 3px;
+	margin: 10px 0;
+}
+
+#button:hover {
+	color: #1A7597;
+	background-color: white;
+}

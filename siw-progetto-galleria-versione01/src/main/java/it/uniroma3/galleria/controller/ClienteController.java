@@ -71,7 +71,7 @@ public class ClienteController {
 	public String confermaDeleteCliente(@PathVariable("id") Long id, Model model) {
 		this.clienteService.deleteById(id);
 		model.addAttribute("clienti", this.clienteService.findAll());
-		return "clienti.html";
+		return "admin/clienti.html";
 	}
 
 	@GetMapping("/deleteCliente/{id}")
@@ -107,7 +107,7 @@ public class ClienteController {
 	public String getClienti(Model model) {
 		List<Cliente> clienti = clienteService.findAll();
 		model.addAttribute("clienti", clienti);
-		return "clienti.html";
+		return "admin/clienti.html";
 	}
 
 	// richiede tutti i Clienti per l'utente semplice, non c'è id
@@ -115,13 +115,13 @@ public class ClienteController {
 	public String getClientiUtente(Model model) {
 		List<Cliente> clienti = clienteService.findAll();
 		model.addAttribute("clienti", clienti);
-		return "clientiUtente.html";
+		return "clienti.html";
 	}
 
 	@GetMapping("/clienteForm")
 	public String artistaForm(Model model) {
 		model.addAttribute("cliente", new Cliente());
-		return "clienteForm.html";
+		return "admin/clienteForm.html";
 	}
 
 }

@@ -2,69 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head>  	
-		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-		<title>Elenco delle opere - admin</title>
-		<link rel="stylesheet" href="../../elenchi.css"/>  
+		<meta charset="ISO-8859-1" />
+	    <title>Opere</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	  
 	</head> 
 	
 	<body>
-	<header> 
-		<div id="titolo"><strong class="titolo">Gallerie d'arte - ELENCO DELLE OPERE CATALOGATE</strong></div>
-	</header>
-	
-	<div th:if="${!opere.empty}">
-	<div class="sezione">	
-		<p>
-			<ul>
-				<li th:each="opera: ${opere}">
-					<p class="desc">
-						<span><strong>Nome opera: </strong></span>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div><h1>Le nostre opere</h1></div>	
+				<ul id="elenco">
+					<li th:each="opera: ${opere}">
 						<span>
-							<a href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
+							<a th:href="@{'/operaUtente' + '/' + ${opera.id}}"
 					   		th:text="${opera.nome}">Opera</a>
 					   	</span>
-					   	<span><strong> - Descrizione opera: </strong></span>
-					   	<span  th:text="${opera.descrizione}">Descrizione generica</span>
-					   	
-					   	<span><strong> - Artista opera: </strong></span>
-						<span
-					   		th:text="${opera.artista.nome}" >Paolo</a>
-					   	</span>
-						<span>
-							<a href="artista.html" th:href="@{'/artista' + '/' + ${opera.artista.id}}"
-					   		th:text="${opera.artista.cognome}">Opera</a>
-					   	</span>
-					   	
-					   	<span th:if="${opera.gallery != null}">
-							<span ><strong> - Galleria associata: </strong></span>
-							<span >
-								<a th:text="${opera.gallery.nome}" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}">Galleria</a>
-							</span>
-						</span>
-					   	
-						<span>
-							<a href="#" th:href="@{'/deleteOpera' +'/' + ${opera.id}}"><strong class="elimina">ELIMINA</strong></a> 
-						</span>
-					</p>
-				</li>	   	
-			</ul>
-		</p>
-	</div>
-	</div>
-	<div class="sezione" th:unless="${!opere.empty}">
-		<h4>NON CI SONO OPERE ANCORA DISPONIBILI! CREARNE UNA</h4>
-	</div>
-			
-	<div class="sezione">	
-		<h4>CREA UNA NUOVA OPERA</h4>
-		<div class="itemMain">
-			<a th:href="@{/newOpera}" href="#"><strong class="creazione">Inserimento nuova opera</strong></a>
+					</li>	   	
+				</ul>
+			</div>
+			<img src="/images/vangogh-vasodigirasoli.jpg"></img>
 		</div>
-	</div>
-		
-	<div class="sezione">
-			<a th:href="@{/home}"><strong class="top">Home</strong></a>
-	</div>
 	</body>
 
 </html>
