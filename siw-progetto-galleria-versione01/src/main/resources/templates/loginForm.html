@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Login')"> </head>
-<body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
-		<h2>Login</h2>
-	</div>
-	<form th:action="@{/login}" method="POST">
-		<div>
-			<div>
-				<span><strong>Username:</strong></span>
-				<span><input name="username" type="text" required /></span>
-			</div>		
-			<div>
-				<span><strong>Password:</strong></span>
-				<span><input name="password" type="password" required /></span>
+	<head> 
+		<meta charset="ISO-8859-1" />
+	    <title>Galleria</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/form.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<div th:replace="fragments/base.html :: sfondo1"></div>
+		<div id="text">
+				<form id="form" th:action="@{/login}" method="POST">
+					<div><h3>Effettua l'accesso al tuo account</h3></div>
+					<div class="form-item">
+						<div>Username:</div>
+						<div><input name="username" type="text" required /></div>
+					</div>		
+					<div class="form-item">
+						<div>Password:</div>
+						<div><input name="password" type="password" required /></div>
+					</div>
+					<div class="button">
+						<div><button type="submit">Login</button></div>
+					</div>
+				</form>
 			</div>
-			<div>
-				<span><button type="submit">Login</button></span>
-			</div>
-		</div>
-	</form>
-    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
-</body>
+	</body>
 </html>

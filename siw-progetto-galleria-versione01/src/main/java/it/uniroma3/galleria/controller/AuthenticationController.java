@@ -18,74 +18,74 @@ import it.uniroma3.galleria.validator.UserValidator;
 
 @Controller
 public class AuthenticationController {
-	
+
 	@Autowired
 	private CredentialsService credentialsService;
-	
+
 	@Autowired
 	private UserValidator userValidator;
-	
+
 	@Autowired
 	private CredentialsValidator credentialsValidator;
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
 		model.addAttribute("utente", new Utente());
 		model.addAttribute("credenziali", new Credenziali());
 		return "registerUser";
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET) 
 	public String showLoginForm (Model model) {
 		return "loginForm";
 	}
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
 	public String logout(Model model) {
 		return "index";
 	}
-	
-    @RequestMapping(value = "/default", method = RequestMethod.GET)
-    public String defaultAfterLogin(Model model) {
-        
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credenziali credenziali = credentialsService.getCredentials(userDetails.getUsername());
-    	if (credenziali.getRole().equals(Credenziali.ADMIN_ROLE)) {
-            return "admin/home";
-        }
-        return "home";
-    }
-    
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String paginaMenu(Model model) {
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credenziali credenziali = credentialsService.getCredentials(userDetails.getUsername());
-    	if (credenziali.getRole().equals(Credenziali.ADMIN_ROLE)) {
-            return "admin/home";
-        }
-        return "home";
-    }
-	
-    @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") Utente utente,
-                 BindingResult userBindingResult,
-                 @ModelAttribute("credenziali") Credenziali credenziali,
-                 BindingResult credentialsBindingResult,
-                 Model model) {
 
-			        // validate user and credentials fields
-			        this.userValidator.validate(utente, userBindingResult);
-			        this.credentialsValidator.validate(credenziali, credentialsBindingResult);
-			
-			        // if neither of them had invalid contents, store the User and the Credentials into the DB
-			        if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
-			            // set the user and store the credentials;
-			            // this also stores the User, thanks to Cascade.ALL policy
-			            credenziali.setUser(utente);
-			            credentialsService.saveCredentials(credenziali);
-			            return "registrationSuccessful";
-			        }
-			        return "registerUser";
-			    }
+	@RequestMapping(value = "/default", method = RequestMethod.GET)
+	public String defaultAfterLogin(Model model) {
+
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credenziali credenziali = credentialsService.getCredentials(userDetails.getUsername());
+		if (credenziali.getRole().equals(Credenziali.ADMIN_ROLE)) {
+			return "admin/home";
+		}
+		return "home";
+	}
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String paginaMenu(Model model) {
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credenziali credenziali = credentialsService.getCredentials(userDetails.getUsername());
+		if (credenziali.getRole().equals(Credenziali.ADMIN_ROLE)) {
+			return "admin/home";
+		}
+		return "home";
+	}
+
+	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
+	public String registerUser(@ModelAttribute("user") Utente utente,
+			BindingResult userBindingResult,
+			@ModelAttribute("credenziali") Credenziali credenziali,
+			BindingResult credentialsBindingResult,
+			Model model) {
+
+		// validate user and credentials fields
+		this.userValidator.validate(utente, userBindingResult);
+		this.credentialsValidator.validate(credenziali, credentialsBindingResult);
+
+		// if neither of them had invalid contents, store the User and the Credentials into the DB
+		if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
+			// set the user and store the credentials;
+			// this also stores the User, thanks to Cascade.ALL policy
+			credenziali.setUser(utente);
+			credentialsService.saveCredentials(credenziali);
+			return "registrationSuccessful";
+		}
+		return "registerUser";
+	}
 }
 

@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
+	<head> 
+		<meta charset="ISO-8859-1" />
+	    <title>Galleria</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
 	
 	
-<body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
-    	<h1 th:text="#{header.index}">Welcome Page</h1>
-		<div>
-			<a th:href="@{/login}" th:text="#{index.login}"><strong>Accedi</strong></a>
-   		</div>
-		<div>
-			<a th:href="@{/register}" th:text="#{index.register}"><strong>Registrati</strong></a>
-   		</div>
-    </div>
-    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
-</body>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<div th:replace="fragments/base.html :: sfondo1"></div>
+	    <div id="text">
+			<div>
+				<a th:href="@{/login}" th:text="#{index.login}"><strong>Accedi</strong></a>
+	   		</div>
+			<div>
+				<a th:href="@{/register}" th:text="#{index.register}"><strong>Registrati</strong></a>
+	   		</div>
+	    </div>
+	</body>
 
 </html>

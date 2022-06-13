@@ -89,15 +89,25 @@ public class GalleriaArte {
 	public void setOpere(List<Opera> opere) {
 		this.opere = opere;
 	}
-
+	
+	public void addOpera(Opera opera) {
+		this.opere.add(opera);
+	}
+	
+	public void removeOpera(Opera opera) {
+		this.opere.remove(opera);
+	}
 
 	public List<Cliente> getClienti() {
 		return clienti;
 	}
 
-
 	public void setClienti(List<Cliente> clienti) {
 		this.clienti = clienti;
 	}
 	
+	
+	public void addCliente(Cliente cliente) {
+		this.clienti.add(cliente);
+	}
 }

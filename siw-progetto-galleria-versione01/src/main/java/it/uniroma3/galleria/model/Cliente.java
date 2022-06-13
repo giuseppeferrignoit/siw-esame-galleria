@@ -43,7 +43,7 @@ public class Cliente {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Indirizzo indirizzo;
-	*/
+
 	//---------------------------------------
 	/*
 	public List<Opera> getOpere() {

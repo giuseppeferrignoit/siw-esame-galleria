@@ -1,0 +1,59 @@
+.section {
+	display: flex;
+	flex-direction: column;
+	margin: 80px;	
+}
+
+.images-row {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.image-item {
+	margin: 30px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	background-color: #1A7597;
+}
+
+.image-item a {
+	color: white;
+}
+
+.image-item a:hover {
+	color: #a2dbef;
+}
+
+.image-item img {
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.contacts {
+	height: 35vh;
+	width: 100%;
+	margin: 0;
+	background-color: #1A7597;
+	display: flex;
+	align-items: center;
+}
+
+a:hover .contacts{
+	color: white;
+}
+
+a .contacts {
+	color: white;
+}
+
+.contacts #text-section {
+	padding: 0 130px;
+}
+

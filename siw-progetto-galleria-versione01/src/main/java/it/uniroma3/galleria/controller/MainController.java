@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-	
+
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
 	public String index(Model model) {
-			return "index";
+		return "index";
 	}
-	
+
 	@GetMapping("/accessoGoogle")
 	public String accessoGoogle(){
 		return "index";
