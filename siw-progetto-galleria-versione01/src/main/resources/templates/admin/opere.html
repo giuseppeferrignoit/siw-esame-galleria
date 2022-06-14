@@ -14,15 +14,16 @@
 		<div id="container">
 			<div id="section">
 				<div th:if="${galleria != null}"><h2>Le opere della galleria</h2><h1 th:text="${galleria.nome}"></h1></div>
-				<div th:if="${artista != null}"><h2>Le opere dell'artista</h2><h1 th:text="${artista.nome} + ${artista.cognome}"></h1></div>
-				<div th:if="${galleria == null && artista == null}"><h1>Le nostre opere</h1></div>
+				<div th:if="${artista != null}"><h2>Le opere dell'artista</h2><h1 th:text="${artista.nome} + ' ' + ${artista.cognome}"></h1></div>
+				<div th:if="${cliente != null}"><h2>Le opere acquistate da</h2><h1 th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></h1></div>
+				<div th:if="${galleria == null && artista == null && cliente == null}"><h1>Le nostre opere</h1></div>
 				<ul id="elenco">
 					<li th:each="opera: ${opere}">
 						<span>
 							<a th:href="@{'/opera' + '/' + ${opera.id}}"
 					   		th:text="${opera.nome}">Opera</a>
 					   	</span>
-					   	<span>
+					   	<span th:if="${cliente == null}">
 							<a href="#" th:href="@{'/deleteOpera' +'/' + ${opera.id}}"><strong class="elimina">ELIMINA</strong></a> 
 						</span>
 					</li>	   	

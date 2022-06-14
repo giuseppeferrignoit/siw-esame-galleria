@@ -3,11 +3,11 @@ package it.uniroma3.galleria.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -33,29 +33,18 @@ public class Cliente {
 	
 	@NotBlank
 	private String nazionalita;
-	
-	@ManyToMany		
-	private List<GalleriaArte> gallerie;
-	/*
+
 	@OneToMany(mappedBy="cliente")
 	private List<Opera> opere;
 	
-	
+	/*
 	@OneToOne(cascade = CascadeType.ALL)
-	private Indirizzo indirizzo;
+	private Indirizzo indirizzo;*/
 
 	//---------------------------------------
-	/*
-	public List<Opera> getOpere() {
-		return opere;
-	}
 
-	public void setOpere(List<Opera> opere) {
-		this.opere = opere;
-	}
-	*/
 	public Cliente() {
-		this.gallerie = new ArrayList<GalleriaArte>();
+		this.opere = new ArrayList<Opera>();
 	}
 
 	public Long getId() {
@@ -89,13 +78,43 @@ public class Cliente {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
-
-	public List<GalleriaArte> getGallerie() {
-		return gallerie;
+/*
+	public Indirizzo getIndirizzo() {
+		return indirizzo;
 	}
 
-	public void setGallerie(List<GalleriaArte> gallerie) {
-		this.gallerie = gallerie;
+	public void setIndirizzo(Indirizzo indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+*/
+	@Override
+	public int hashCode() {
+		return this.getNome().hashCode() + this.getCognome().hashCode();
+	}
+	
+	public List<Opera> getOpere() {
+		return opere;
+	}
+
+	public void setOpere(List<Opera> opere) {
+		this.opere = opere;
+	}
+	
+	public void addOpera(Opera opera) {
+		this.getOpere().add(opera);
+	}
+	
+	public void removeOpera(Opera opera) {
+		this.getOpere().remove(opera);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj.getClass() != Cliente.class)
+			return false;
+		Cliente that = (Cliente) obj;
+		return this.nome.equals(that.getNome()) && 
+			   this.cognome.equals(that.getCognome());
 	}
 	
 }

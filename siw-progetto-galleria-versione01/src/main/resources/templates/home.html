@@ -10,7 +10,7 @@
 	</head> 
 	
 	<body>
-		<header th:replace="fragments/base.html :: intestazione"></header>
+		<header th:replace="fragments/baseUtente.html :: intestazione"></header>
 		
 		<div class="section">
 			<div class="images-row">
@@ -22,15 +22,9 @@
 					<img src="../images/fridakahlo-autoritratto.jpg" alt="img2">
 					<a th:href="@{/artistiUtente}">Consulta gli artisti</a>
 				</div>
-			</div>
-			<div class="images-row">
 				<div class="image-item">
 					<img src="../images/magritte-gliamanti.jpg" alt="img3">
 					<a th:href="@{/opereUtente}">Consulta le opere</a>
-				</div>
-				<div class="image-item">
-					<img src="../images/clienti.jpg" alt="img4">
-					<a th:href="@{/clientiUtente}">Consulta i clienti accreditati</a>
 				</div>
 			</div>
 		</div>

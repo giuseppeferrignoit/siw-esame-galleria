@@ -30,14 +30,13 @@ public class GalleriaArte {
 	@OneToMany(mappedBy="gallery")
 	private List<Opera> opere;
 	
-
+/*
 	@ManyToMany(mappedBy="gallerie")
 	private List<Cliente> clienti;
-	
+*/	
 	//------------------------------------------------------
 
 	public GalleriaArte() {
-		this.clienti = new ArrayList<Cliente>();
 		this.opere = new ArrayList<Opera>();	 
 	}
 
@@ -97,7 +96,7 @@ public class GalleriaArte {
 	public void removeOpera(Opera opera) {
 		this.opere.remove(opera);
 	}
-
+/*
 	public List<Cliente> getClienti() {
 		return clienti;
 	}
@@ -109,5 +108,5 @@ public class GalleriaArte {
 	
 	public void addCliente(Cliente cliente) {
 		this.clienti.add(cliente);
-	}
+	}*/
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" />
+	    <title>Opere</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	  
+	</head> 
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div class="section-item" th:if="${!cliente.opere.empty}"><strong>Opere gia' acquistate dal cliente:</strong>
+					<ul id="elenco" th:if="${!cliente.opere.empty}">
+						<li th:each="opera: ${cliente.opere}">
+							<span>
+								<a th:href="@{'/opera' + '/' + ${opera.id}}"
+						   		th:text="${opera.nome}">Opera</a>
+						   	</span>
+						</li>	   	
+					</ul>
+				</div>
+				<div class="section-item" th:if="${!opere.empty}">
+					<strong>Vuoi associare un'opera al cliente <span th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></span></strong>
+					<ul id="elenco" >
+						<li th:each="opera: ${opere}">
+							<span>
+								<a th:href="@{'/opera' + '/' + ${opera.id}}"
+						   		th:text="${opera.nome}">Opera</a>
+						   	</span>
+						   	<span>
+								<a th:href="@{'/cliente' + '/' + ${cliente.id}
+								 + '/opera' +'/' + ${opera.id}}"><strong>ASSOCIA</strong></a> 
+							</span>
+						</li>	   	
+					</ul>
+				</div>
+			</div>
+			<img src="/images/vangogh-vasodigirasoli.jpg"></img>
+		</div>
+	</body>
+
+</html>

@@ -134,22 +134,5 @@ public class OperaController {
 		model.addAttribute("artisti", artistaService.findAll());
 		return "admin/newOpera.html";
 	}
-	/*
 
-	// crea una nuova opera associata acquistata dal cliente passato nel path
-		@GetMapping("/cliente/{idCliente}/nuovaOpera")
-		public String createOperaCliente(@PathVariable("idCliente") Long idCliente, Model model) {
-			Opera opera = new Opera();
-			model.addAttribute("cliente", clienteService.findById(idCliente));
-			model.addAttribute("opera", opera);
-			return "operaAquistataForm.html";
-		}
-
-		//crea una nuova opera
-		@GetMapping("/newOperaCliente")
-		public String createNewOperaCliente(Model model) {
-			model.addAttribute("clienti", clienteService.findAll());
-			return "newOperaCliente.html";
-		}
-	 */
 }

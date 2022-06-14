@@ -10,7 +10,7 @@
 	</head> 
 	
 	<body>
-		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<header th:replace="fragments/baseUtente.html :: intestazione"></header>	
 		<div id="container">
 			<div id="section">
 				<div th:if="${galleria != null}"><h2>Le opere della galleria</h2><h1 th:text="${galleria.nome}"></h1></div>

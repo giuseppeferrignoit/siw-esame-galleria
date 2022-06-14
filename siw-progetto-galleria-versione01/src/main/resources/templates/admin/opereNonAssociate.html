@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" />
+	    <title>Opere non associate</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+	</head> 
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div><h1>Vuoi associare una delle seguenti opere alla galleria <span th:text="${galleria.nome}"></span>?</h1></div>
+				<ul id="elenco">
+					<li th:each="opera: ${opere}">
+						<span>
+							<a th:href="@{'/opera' + '/' + ${opera.id}}"
+							   th:text="${opera.nome}">Opera </a>
+					   	</span>
+					   	<span>
+							<a th:href="@{'/associaOpera' + '/' + ${opera.id}+ '/' + ${galleria.id}}"><strong>ASSOCIA ALLA GALLERIA</strong></a>
+						</span>
+					</li>	   	
+				</ul>
+			</div>
+			<img src="/images/galleria1.jpg"></img>
+		</div>
+	</body>
+
+</html>

@@ -10,7 +10,7 @@
 	</head> 
 
 	<body>
-		<header th:replace="fragments/baseUtente.html :: intestazione"></header>
+		<header th:replace="fragments/base.html :: intestazione"></header>
 		<div id="sfondo-cliente"></div>
 		<div id="section">
 			<div class="section-item">
@@ -20,6 +20,18 @@
 				<span  th:text="${cliente.cognome}">Cognome Cliente</span></div>
 				<div><strong>Nazionalita': </strong>
 				<span th:text="${cliente.nazionalita}">Nazionalità</span></div>
+			</div>
+			<div class="section-item" id="buttons">
+				<div class="button">
+					<p><a th:href="@{'/cliente' + '/' + ${cliente.id} + '/' + 
+						'opere'}"><strong>Consulta opere acquistate</strong></a>
+					</p>
+				</div>
+				<div class="button">
+					<p><a th:href="@{'/cliente' + '/' + ${cliente.id} + '/' + 
+						'scegliOperaDaAcquistare'}" href="#"><strong class="conferma">Associa una nuova opera acquistata</strong></a>
+					</p>
+				</div>
 			</div>
 		</div>
 	</body>

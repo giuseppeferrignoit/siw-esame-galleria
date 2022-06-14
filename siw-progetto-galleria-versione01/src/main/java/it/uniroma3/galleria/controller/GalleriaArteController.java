@@ -93,7 +93,7 @@ public class GalleriaArteController {
 		GalleriaArte galleria = this.galleriaService.findById(id);
 		model.addAttribute("galleria", galleria);
 		model.addAttribute("opere", operaService.findOpereNonAssociate());
-		return "opereNonAssociate.html";
+		return "admin/opereNonAssociate.html";
 	}
 
 	@GetMapping("/associaOpera/{idOpera}/{idGalleria}")
@@ -108,39 +108,6 @@ public class GalleriaArteController {
 		return "opere.html";
 	}
 
-	// METODI PER LA VENDITA A UN CLIENTE
-	/*
-		//si associa una nuova opera alla galleria il cui id è passato nel path
-		@GetMapping("/galleria/{idGalleria}/{idCliente}/vendiNuovaOpera")
-		public String scegliNuovaOperaDaVendere(@PathVariable("idGalleria") Long idGalleria, 
-				@PathVariable("idCliente") Long idCliente, Model model) {
-			GalleriaArte galleria = this.galleriaService.findById(idGalleria);
-			Cliente cliente = this.clienteService.findById(idCliente);
-
-			model.addAttribute("galleria", galleria);
-			model.addAttribute("cliente", cliente);
-
-			model.addAttribute("opere", operaService.findOpereNonVendute());
-			return "opereNonVendute.html";
-		}
-
-		@GetMapping("/vendiOpera/{idOpera}/{idGalleria}/{idCliente}")
-		public String vendiNuovaOpera(@PathVariable("idOpera") Long idOpera, 
-						@PathVariable("idGalleria") Long idGalleria,
-						@PathVariable("idCliente") Long idCliente, Model model) {
-			GalleriaArte galleria = this.galleriaService.findById(idGalleria);
-			Opera opera = this.operaService.findById(idOpera);
-			Cliente cliente = this.clienteService.findById(idCliente);
-
-			this.galleriaService.removeOpera(galleria, opera);
-			this.clienteService.acquistaOpera(cliente, opera);
-			model.addAttribute("galleria", galleria);
-			model.addAttribute("opere", operaService.findAll());
-			model.addAttribute("cliente", cliente);
-
-			return "opere.html";
-		}
-	 */
 	// METODI PER DELETE
 
 	@GetMapping("/confermaDeleteGalleria/{id}")

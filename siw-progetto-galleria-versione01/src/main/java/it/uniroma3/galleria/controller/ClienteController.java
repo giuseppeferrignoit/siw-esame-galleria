@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.galleria.model.Cliente;
 import it.uniroma3.galleria.service.ClienteService;
+import it.uniroma3.galleria.service.OperaService;
 import it.uniroma3.galleria.validator.ClienteValidator;
 
 
@@ -24,6 +25,9 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 
+	@Autowired
+	private OperaService operaService;
+	
 	@Autowired
 	private ClienteValidator clienteValidator;
 
@@ -55,7 +59,7 @@ public class ClienteController {
 
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla pagina di visualizzazione dati inseriti
-			return "cliente.html"; 
+			return "admin/cliente.html"; 
 		}
 		else {
 			model.addAttribute("cliente", cliente);
@@ -82,6 +86,7 @@ public class ClienteController {
 
 	// METODI GET
 
+	
 	// richiede un singolo cliente tramite id
 	@GetMapping("/cliente/{id}")
 	public String getCliente(@PathVariable("id")Long id, Model model) {
@@ -89,7 +94,7 @@ public class ClienteController {
 		Cliente cliente = clienteService.findById(id);
 		model.addAttribute("cliente", cliente);
 		// ritorna la pagina con i dati dell'entità richiesta
-		return "cliente.html";
+		return "admin/cliente.html";
 	}
 
 	// richiede tutti i Clienti, non c'è id
@@ -112,6 +117,29 @@ public class ClienteController {
 	public String artistaForm(Model model) {
 		model.addAttribute("cliente", new Cliente());
 		return "admin/clienteForm.html";
+	}
+	
+	@GetMapping("/cliente/{id}/opere")
+	public String opereAcquistate(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("cliente", clienteService.findById(id));
+		model.addAttribute("opere", clienteService.getOpereAcquistate(id));
+		return "admin/opere.html";
+	}
+	
+	@GetMapping("/cliente/{id}/scegliOperaDaAcquistare")
+	public String getOpereNonAcquistate(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("cliente", clienteService.findById(id));
+		model.addAttribute("opere", operaService.findOpereNonAcquistate());
+		return "admin/acquistaOpera.html";
+	}
+	
+	@GetMapping("/cliente/{idCliente}/opera/{idOpera}")
+	public String acquistaOpera(@PathVariable("idCliente") Long idCliente,
+			@PathVariable("idOpera") Long idOpera, Model model) {
+		clienteService.acquistaOpera(idCliente, idOpera);
+		model.addAttribute("cliente", clienteService.findById(idCliente));
+		model.addAttribute("opere", operaService.findOpereNonAcquistate());
+		return "admin/acquistaOpera.html";
 	}
 
 }

@@ -49,8 +49,8 @@ public class IndirizzoService {
 	
 	// Metodo che risponde ad una validazione del Validator
 	public boolean alreadyExists(Indirizzo indirizzo) {
-		return indirizzoRepository.existsByViaAndCittaAndCapAndPaese
-				(indirizzo.getVia(), indirizzo.getCitta(), indirizzo.getCap(), indirizzo.getPaese());
+		return indirizzoRepository.existsByViaAndCittaAndCap
+				(indirizzo.getVia(), indirizzo.getCitta(), indirizzo.getCap());
 	}
 }
 

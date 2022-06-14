@@ -24,16 +24,16 @@ public class Opera {
 	
 	@ManyToOne
 	private Artista artista;
-	/*
+
 	@ManyToOne
 	private Cliente cliente;
-	*/
+
 	@ManyToOne
 	private GalleriaArte gallery;
 	
 	
 	//-----------------------------------------
-	/*
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -41,7 +41,6 @@ public class Opera {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	*/
 	
 
 	public GalleriaArte getGallery() {

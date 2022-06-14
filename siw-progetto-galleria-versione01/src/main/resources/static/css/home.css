@@ -1,7 +1,7 @@
 .section {
 	display: flex;
 	flex-direction: column;
-	margin: 80px;	
+	margin: 140px 80px;	
 }
 
 .images-row {
@@ -9,10 +9,11 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
+	margin: 15px 0;
 }
 
 .image-item {
-	margin: 30px;
+	margin: 0px 15px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;

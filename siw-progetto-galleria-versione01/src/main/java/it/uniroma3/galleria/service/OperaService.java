@@ -77,21 +77,11 @@ public class OperaService {
 	public List<Opera> findOpereNonAssociate() {
 		List<Opera> opere = this.findAll();
 		for (Opera opera : operaRepository.findAll()) {
-			if (opera.getGallery() != null) // Opera non associata
+			if (opera.getGallery() != null || opera.getCliente() != null) // Opera non associata
 				opere.remove(opera);
 		}
 		return opere;
 	}
-	/*
-	public List<Opera> findOpereNonVendute() {
-		List<Opera> opere = this.findAll();
-		for (Opera opera : operaRepository.findAll()) {
-			if (opera.getCliente() != null) // Opera non venduta
-				opere.remove(opera);
-		}
-		return opere;
-	}
-	*/
 
 	public void removeGalleriaFromOpere(GalleriaArte galleria) {
 		List<Opera> opere = this.findAll();
@@ -104,4 +94,14 @@ public class OperaService {
 			}
 		}
 	}
+
+	public Object findOpereNonAcquistate() {
+		List<Opera> opere = new ArrayList<>();
+		for(Opera opera : operaRepository.findAll()) {
+			if(opera.getCliente() == null)
+				opere.add(opera);
+		}
+		return opere;
+	}
+
 }

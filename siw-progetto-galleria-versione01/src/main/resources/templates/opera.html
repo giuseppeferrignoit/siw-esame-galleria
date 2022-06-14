@@ -10,7 +10,7 @@
 	</head> 
 
 	<body>
-		<header th:replace="fragments/base.html :: intestazione"></header>
+		<header th:replace="fragments/baseUtente.html :: intestazione"></header>
 		<div id="sfondo-opera"></div>
 		<div id="section">
 			<div class="section-item">
@@ -19,9 +19,9 @@
 				<div><strong>Descrizione: </strong>
 				<span  th:text="${opera.descrizione}">Descrizione</span></div>
 				<div><strong>Artista: </strong>
-				<a th:text="${opera.artista}" th:href="@{'/artista' + '/' + ${opera.artista.id}}">Artista</a></div>
+				<a th:text="${opera.artista}" th:href="@{'/artistaUtente' + '/' + ${opera.artista.id}}">Artista</a></div>
 				<div th:if="${opera.gallery != null}"><strong>Galleria:</strong>
-				<a th:text="${opera.gallery.nome}" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}">Galleria</a></div>
+				<a th:text="${opera.gallery.nome}" th:href="@{'/galleriaUtente' + '/' + ${opera.gallery.id}}">Galleria</a></div>
 			</div>
 		</div>
 	</body>

@@ -22,9 +22,6 @@ public class Indirizzo {
 	@NotBlank
 	private String cap;
 	
-	@NotBlank
-	private String paese;
-	
 	//--------------------------------
 
 	public Long getId() {
@@ -57,14 +54,6 @@ public class Indirizzo {
 
 	public void setCap(String cap) {
 		this.cap = cap;
-	}
-
-	public String getPaese() {
-		return paese;
-	}
-
-	public void setPaese(String paese) {
-		this.paese = paese;
 	}
 	
 }
