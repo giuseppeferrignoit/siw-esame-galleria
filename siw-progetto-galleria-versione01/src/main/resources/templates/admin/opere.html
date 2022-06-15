@@ -22,7 +22,9 @@
 						<span>
 							<a th:href="@{'/opera' + '/' + ${opera.id}}"
 					   		th:text="${opera.nome}">Opera</a>
-					   	</span>
+					   	</span> 
+					   	<span th:if="${opera.cliente != null}">(Venduta)</span>
+					   	<span th:unless="${opera.cliente != null}">(Disponibile)</span>
 					   	<span th:if="${cliente == null}">
 							<a href="#" th:href="@{'/deleteOpera' +'/' + ${opera.id}}"><strong class="elimina">ELIMINA</strong></a> 
 						</span>

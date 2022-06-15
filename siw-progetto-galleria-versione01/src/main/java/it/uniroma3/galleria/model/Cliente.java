@@ -117,4 +117,9 @@ public class Cliente {
 			   this.cognome.equals(that.getCognome());
 	}
 	
+	@Override
+	public String toString() {
+		return this.nome + " " + this.cognome;
+	}
+	
 }

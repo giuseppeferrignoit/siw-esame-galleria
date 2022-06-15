@@ -76,7 +76,7 @@ public class GalleriaArteController {
 
 	//aggiunge l'opera il cui id è passato nel path alla Galleriia
 	@GetMapping("/galleria/{idGalleria}/{idOpera}")
-	public String addIngrediente(@PathVariable("idGalleria") Long idGalleria,
+	public String addOpera(@PathVariable("idGalleria") Long idGalleria,
 			@PathVariable("idOpera") Long idOpera, Model model) {
 		GalleriaArte galleria = this.galleriaService.findById(idGalleria);
 		Opera opera = this.operaService.findById(idOpera);

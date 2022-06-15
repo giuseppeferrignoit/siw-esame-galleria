@@ -15,6 +15,7 @@
 				
 			<div id="text">
 				<form id="form" th:action="@{/galleria}" method="POST" th:object="${galleria}">
+					<h3>Inserisci una nuova galleria</h3>
 					<div th:if="${#fields.hasGlobalErrors()}">
 			    		<p 	th:each="err : ${#fields.globalErrors()}" 
 			  				th:text="${err}">ERRORE GENERICO</p> 

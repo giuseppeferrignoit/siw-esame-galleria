@@ -70,7 +70,6 @@ public class ClienteService {
 	public void acquistaOpera(Long idCliente, Long idOpera) {
 		Cliente cliente = this.findById(idCliente);		
 		Opera opera = operaService.findById(idOpera);
-		opera.setGallery(null);
 		cliente.addOpera(opera);
 		opera.setCliente(cliente);
 		operaService.save(opera, opera.getArtista());

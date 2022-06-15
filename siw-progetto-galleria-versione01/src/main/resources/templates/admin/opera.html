@@ -19,9 +19,11 @@
 				<div><strong>Descrizione: </strong>
 				<span  th:text="${opera.descrizione}">Descrizione</span></div>
 				<div><strong>Artista: </strong>
-				<span  th:text="${opera.artista}" th:href="@{'/artista' + '/' + ${opera.artista.id}}">Artista</span></div>
+				<a th:text="${opera.artista}" th:href="@{'/artista' + '/' + ${opera.artista.id}}">Artista</a></div>
 				<div th:if="${opera.gallery != null}"><strong>Galleria:</strong>
-				<span  th:text="${opera.gallery.nome}" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}">Galleria</span></div>
+				<a th:text="${opera.gallery.nome}" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}">Galleria</a></div>
+				<div th:if="${opera.cliente != null}"><strong>Cliente: </strong>
+				<a th:text="${opera.cliente}" th:href="@{'/cliente' + '/' + ${opera.cliente.id}}">Cliente</a></div>
 			</div>
 		</div>	
 	</body>

@@ -19,8 +19,10 @@
 				<ul id="elenco">
 					<li th:each="opera: ${opere}">
 						<span>
-							<a th:href="@{'/opera' + '/' + ${opera.id}}"
+							<a th:href="@{'/operaUtente' + '/' + ${opera.id}}"
 					   		th:text="${opera.nome}">Opera</a>
+					   		<span th:if="${opera.cliente != null}">(Venduta)</span>
+					   		<span th:unless="${opera.cliente != null}">(Disponibile)</span>
 					   	</span>
 					</li>	   	
 				</ul>

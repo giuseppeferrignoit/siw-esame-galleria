@@ -20,7 +20,7 @@
 				<span  th:text="${opera.descrizione}">Descrizione</span></div>
 				<div><strong>Artista: </strong>
 				<a th:text="${opera.artista}" th:href="@{'/artistaUtente' + '/' + ${opera.artista.id}}">Artista</a></div>
-				<div th:if="${opera.gallery != null}"><strong>Galleria:</strong>
+				<div th:if="${opera.gallery != null}"><strong>Galleria: </strong>
 				<a th:text="${opera.gallery.nome}" th:href="@{'/galleriaUtente' + '/' + ${opera.gallery.id}}">Galleria</a></div>
 			</div>
 		</div>

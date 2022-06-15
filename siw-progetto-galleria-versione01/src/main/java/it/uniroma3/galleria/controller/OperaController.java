@@ -100,6 +100,14 @@ public class OperaController {
 	public String getOpera(@PathVariable("id") Long id, Model model) { // id è una variabile associata al path
 		Opera opera = operaService.findById(id);
 		model.addAttribute("opera", opera);
+		return "admin/opera.html"; // ritorna la pagina con i dati dell'entità richiesta
+	}
+	
+	// richiede una singola opera tramite id per l'utente generico
+	@GetMapping("/operaUtente/{id}")
+	public String getOperaUtente(@PathVariable("id") Long id, Model model) { // id è una variabile associata al path
+		Opera opera = operaService.findById(id);
+		model.addAttribute("opera", opera);
 		return "opera.html"; // ritorna la pagina con i dati dell'entità richiesta
 	}
 

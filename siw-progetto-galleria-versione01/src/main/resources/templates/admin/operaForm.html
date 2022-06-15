@@ -15,7 +15,7 @@
 		
 			<div id="text">
 				<form id="form" th:action="@{'/artista' + '/' + ${artista.id} + '/' + 'opera'}" method="POST" th:object="${opera}">
-			
+					<h3>Inserisci una nuova opera</h3>
 					<div th:if="${#fields.hasGlobalErrors()}">
 			    		<p 	th:each="err : ${#fields.globalErrors()}" 
 			  				th:text="${err}">ERRORE GENERICO</p> 
