@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.galleria.model.Cliente;
+import it.uniroma3.galleria.model.Indirizzo;
 import it.uniroma3.galleria.service.ClienteService;
+import it.uniroma3.galleria.service.IndirizzoService;
 import it.uniroma3.galleria.service.OperaService;
 import it.uniroma3.galleria.validator.ClienteValidator;
 
@@ -29,8 +31,10 @@ public class ClienteController {
 	private OperaService operaService;
 	
 	@Autowired
+	private IndirizzoService indirizzoService;
+	
+	@Autowired
 	private ClienteValidator clienteValidator;
-
 
 	/*
 	 * convenzione: get per le operazioni di lettura, post per gli aggiornamenti
@@ -56,15 +60,15 @@ public class ClienteController {
 
 			this.clienteService.save(cliente); // salvo un oggetto cliente
 			model.addAttribute("cliente", cliente);
-
+			model.addAttribute("indirizzo", indirizzoService.creaIndirizzo());
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla pagina di visualizzazione dati inseriti
-			return "admin/cliente.html"; 
+			return "admin/indirizzoForm.html"; 
 		}
 		else {
 			model.addAttribute("cliente", cliente);
 			// se ci sono errori si rimanda alla form di inserimento
-			return "clienteForm.html"; 
+			return "admin/clienteForm.html"; 
 		}
 	}
 
@@ -110,7 +114,7 @@ public class ClienteController {
 	public String getClientiUtente(Model model) {
 		List<Cliente> clienti = clienteService.findAll();
 		model.addAttribute("clienti", clienti);
-		return "clienti.html";
+		return "admin/clienti.html";
 	}
 
 	@GetMapping("/clienteForm")

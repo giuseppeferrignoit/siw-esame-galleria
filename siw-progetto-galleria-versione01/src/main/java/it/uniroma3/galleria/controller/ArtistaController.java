@@ -62,7 +62,7 @@ public class ArtistaController {
 		else {
 			model.addAttribute("artista", artista);
 			// se ci sono errori si rimanda alla form di inserimento
-			return "artistaForm.html"; 
+			return "admin/artistaForm.html"; 
 		}
 	}
 

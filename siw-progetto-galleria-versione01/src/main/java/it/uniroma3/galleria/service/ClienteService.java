@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.galleria.model.Cliente;
+import it.uniroma3.galleria.model.Indirizzo;
 import it.uniroma3.galleria.model.Opera;
 import it.uniroma3.galleria.repository.ClienteRepository;
 
@@ -73,6 +75,12 @@ public class ClienteService {
 		cliente.addOpera(opera);
 		opera.setCliente(cliente);
 		operaService.save(opera, opera.getArtista());
+	}
+
+	public void addIndirizzoToCliente(Long idCliente, Indirizzo indirizzo) {
+		Cliente cliente = this.findById(idCliente);
+		cliente.setIndirizzo(indirizzo);
+		this.save(cliente);
 	}
 	
 	

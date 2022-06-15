@@ -68,7 +68,7 @@ public class GalleriaArteController {
 		else {
 			model.addAttribute("galleria", galleria);
 			// se ci sono errori si rimanda alla form di inserimento
-			return "galleriaForm.html"; 
+			return "admin/galleriaForm.html"; 
 		}
 	}
 
@@ -104,8 +104,8 @@ public class GalleriaArteController {
 		this.galleriaService.addOpera(galleria, opera);
 		this.operaService.setGalleria(galleria, opera);
 		model.addAttribute("galleria", galleria);
-		model.addAttribute("opere", operaService.findAllByGalleriaArte(galleria));
-		return "opere.html";
+		model.addAttribute("opere", operaService.findOpereNonAssociate());
+		return "admin/opereNonAssociate.html";
 	}
 
 	// METODI PER DELETE

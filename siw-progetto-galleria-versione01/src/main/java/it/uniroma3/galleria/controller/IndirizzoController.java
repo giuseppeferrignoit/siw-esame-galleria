@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.galleria.model.Indirizzo;
+import it.uniroma3.galleria.service.ClienteService;
 import it.uniroma3.galleria.service.IndirizzoService;
 import it.uniroma3.galleria.validator.IndirizzoValidator;
 
@@ -24,6 +25,9 @@ public class IndirizzoController {
 
 	@Autowired
 	private IndirizzoService indirizzoService;
+	
+	@Autowired
+	private ClienteService clienteService;
 
 	@Autowired
 	private IndirizzoValidator indirizzoValidator;
@@ -35,8 +39,9 @@ public class IndirizzoController {
 
 	// METODO POST PER INSERIRE UN NUOVO BUFFET
 
-	@PostMapping("/indirizzo")
+	@PostMapping("/cliente/{idCliente}/indirizzo")
 	public String addIndirizzo(@Valid @ModelAttribute(value="indirizzo") Indirizzo indirizzo, 
+			@PathVariable("idCliente") Long idCliente,
 			BindingResult bindingResult, Model model) {
 
 		/* Se non ci sono errori inserisce la ricorrenza di Indirizzo 
@@ -49,18 +54,19 @@ public class IndirizzoController {
 		this.indirizzoValidator.validate(indirizzo, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
-
-			this.indirizzoService.save(indirizzo); // salvo un oggetto Artista
-			model.addAttribute("indirizzo", indirizzo);
+			
+			this.indirizzoService.save(indirizzo); // salvo un oggetto Indirizzo
+			this.clienteService.addIndirizzoToCliente(idCliente, indirizzo);
+			model.addAttribute("cliente", clienteService.findById(idCliente));
 
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla pagina di visualizzazione dati inseriti
-			return "indirizzo.html"; 
+			return "admin/cliente.html"; 
 		}
 		else {
 			model.addAttribute("indirizzo", indirizzo);
 			// se ci sono errori si rimanda alla form di inserimento
-			return "indirizzoForm.html"; 
+			return "admin/indirizzoForm.html"; 
 		}
 	}
 
@@ -120,7 +126,7 @@ public class IndirizzoController {
 	@GetMapping("/indirizzoForm")
 	public String indirizzoForm(Model model) {
 		model.addAttribute("indirizzo", new Indirizzo());
-		return "indirizzoForm.html";
+		return "admin/indirizzoForm.html";
 	}
 
 }

@@ -37,9 +37,8 @@ public class Cliente {
 	@OneToMany(mappedBy="cliente")
 	private List<Opera> opere;
 	
-	/*
-	@OneToOne(cascade = CascadeType.ALL)
-	private Indirizzo indirizzo;*/
+	@OneToOne
+	private Indirizzo indirizzo;
 
 	//---------------------------------------
 
@@ -78,7 +77,7 @@ public class Cliente {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
-/*
+
 	public Indirizzo getIndirizzo() {
 		return indirizzo;
 	}
@@ -86,7 +85,7 @@ public class Cliente {
 	public void setIndirizzo(Indirizzo indirizzo) {
 		this.indirizzo = indirizzo;
 	}
-*/
+	
 	@Override
 	public int hashCode() {
 		return this.getNome().hashCode() + this.getCognome().hashCode();

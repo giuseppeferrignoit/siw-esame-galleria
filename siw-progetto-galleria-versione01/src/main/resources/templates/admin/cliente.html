@@ -20,6 +20,8 @@
 				<span  th:text="${cliente.cognome}">Cognome Cliente</span></div>
 				<div><strong>Nazionalita': </strong>
 				<span th:text="${cliente.nazionalita}">Nazionalità</span></div>
+				<div th:if="${cliente.indirizzo != null}"><strong>Indirizzo: </strong>
+				<span th:text="${cliente.indirizzo}">Indirizzo</span></div>
 			</div>
 			<div class="section-item" id="buttons">
 				<div class="button">

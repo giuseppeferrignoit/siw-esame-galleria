@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import it.uniroma3.galleria.model.Artista;
-import it.uniroma3.galleria.model.GalleriaArte;
 import it.uniroma3.galleria.model.Opera;
 import it.uniroma3.galleria.service.ArtistaService;
+import it.uniroma3.galleria.service.ClienteService;
 import it.uniroma3.galleria.service.OperaService;
 import it.uniroma3.galleria.validator.OperaValidator;
-import it.uniroma3.galleria.service.ClienteService;
 
 
 @Controller
@@ -33,10 +31,6 @@ public class OperaController {
 
 	@Autowired
 	private ArtistaService artistaService;
-
-	@Autowired
-	private ClienteService clienteService;
-
 
 	/*
 	 * convenzione: get per le operazioni di lettura, post per gli aggiornamenti
@@ -68,13 +62,13 @@ public class OperaController {
 			model.addAttribute("opera", opera);
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla form di visualizzazione dati inseriti
-			return "opera.html"; 
+			return "admin/opera.html"; 
 
 		}
 		else {
 			// Se ci sono errori si va alla form di inserimento opera
 			model.addAttribute("opera", opera);
-			return "operaForm.html"; 
+			return "admin/operaForm.html"; 
 		}
 	} 
 

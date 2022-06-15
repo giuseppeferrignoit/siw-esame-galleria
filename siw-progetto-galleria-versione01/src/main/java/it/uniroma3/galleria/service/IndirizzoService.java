@@ -52,6 +52,10 @@ public class IndirizzoService {
 		return indirizzoRepository.existsByViaAndCittaAndCap
 				(indirizzo.getVia(), indirizzo.getCitta(), indirizzo.getCap());
 	}
+
+	public Indirizzo creaIndirizzo() {
+		return new Indirizzo();
+	}
 }
 
 

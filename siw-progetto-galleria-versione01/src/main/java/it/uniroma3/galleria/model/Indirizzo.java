@@ -56,4 +56,8 @@ public class Indirizzo {
 		this.cap = cap;
 	}
 	
+	@Override
+	public String toString() {
+		return this.via + " " + this.cap + " " + this.citta;
+	}
 }
