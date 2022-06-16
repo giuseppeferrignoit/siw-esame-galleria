@@ -13,18 +13,26 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>	
 		<div id="container">
 			<div id="section">
-				<div><h1>I nostri artisti</h1></div>	
-				<ul id="elenco">
-					<li th:each="artista: ${artisti}">
-						<span>
-							<a th:href="@{'/artista' + '/' + ${artista.id}}"
-							th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
-					   	</span>
-					   	<span>
-					   		<a th:href="@{'/deleteArtista' +'/' + ${artista.id}}"><strong>ELIMINA</strong></a>
-					   	</span>
-					</li>	   	
-				</ul>
+				<div th:if="${!artisti.empty}" class="section-item">
+					<div><h1>I nostri artisti</h1></div>	
+					<ul id="elenco">
+						<li th:each="artista: ${artisti}">
+							<span>
+								<a th:href="@{'/artista' + '/' + ${artista.id}}"
+								th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
+						   	</span>
+						   	<span>
+						   		<a th:href="@{'/deleteArtista' +'/' + ${artista.id}}"><strong>ELIMINA</strong></a>
+						   	</span>
+						</li>	   	
+					</ul>
+				</div>
+				<div th:unless="${!artisti.empty}" class="section-item">
+					<div><h1>Non ci sono ancora artisti censiti</h1></div>
+				</div>
+				<div class="section-item">
+					<a id="button" th:href="@{/artistaForm}">Inserisci un nuovo artista</a>
+				</div>
 			</div>
 			<img src="/images/vangogh-autoritratto.jpg"></img>
 		</div>

@@ -14,6 +14,10 @@
 	justify-content: flex-start;
 }
 
+#section h1, #section h2, #section h3 {
+	color: #1A7597;
+}
+
 img {
 	width: 30%;
 	position: relative;
@@ -23,16 +27,18 @@ img {
 
 #elenco {
 	font-size: 18px;
+	line-height: 1.8;
 }
 
-#select {
-	font-size: smaller;
+a#select {
+	font-size: 15px;
+	text-decoration: underline;
 	color: #1A7597;
 }
 
-#select:hover {
+a:hover#select{
 	color: black;
-	font-weight: bold;
+	border-color: black;
 }
 
 .section-item {

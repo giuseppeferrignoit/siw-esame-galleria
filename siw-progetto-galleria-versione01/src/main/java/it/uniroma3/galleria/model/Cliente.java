@@ -34,10 +34,10 @@ public class Cliente {
 	@NotBlank
 	private String nazionalita;
 
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente", cascade=CascadeType.MERGE)
 	private List<Opera> opere;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Indirizzo indirizzo;
 
 	//---------------------------------------

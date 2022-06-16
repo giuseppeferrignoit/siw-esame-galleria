@@ -13,7 +13,7 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>	
 		<div id="container">
 			<div id="section">
-				<div><h2>Opere gia' associate alla galleria <span th:text="${galleria.nome}"></span>:</h2></div>
+				<div th:if="${!galleria.opere.empty}"><h2>Opere gia' associate alla galleria <span th:text="${galleria.nome}"></span>:</h2></div>
 				<ul id="elenco">
 					<li th:each="opera: ${galleria.opere}">
 						<span>
@@ -22,7 +22,7 @@
 					   	</span>
 					</li>	   	
 				</ul>
-				<div><h2>Vuoi associare una delle seguenti opere alla galleria <span th:text="${galleria.nome}"></span>?</h2></div>
+				<div th:if="${!opere.empty}"><h2>Vuoi associare una delle seguenti opere alla galleria <span th:text="${galleria.nome}"></span>?</h2></div>
 				<ul id="elenco">
 					<li th:each="opera: ${opere}">
 						<span>
@@ -34,7 +34,8 @@
 						</span>
 					</li>	   	
 				</ul>
-				<div id="buttons"><a id="button" th:href="@{'/galleria' + '/' + ${galleria.id} + '/opere'}">Conferma</a></div>
+				<div th:unless="${!opere.empty}"><h2>Al momento non ci sono opere disponibili da associare alla galleria 
+				<span th:text="${galleria.nome}"></span></h2></div>
 			</div>
 			<img src="/images/galleria1.jpg"></img>
 		</div>

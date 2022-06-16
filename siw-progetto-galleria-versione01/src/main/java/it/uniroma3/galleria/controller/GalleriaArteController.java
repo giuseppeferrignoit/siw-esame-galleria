@@ -87,25 +87,35 @@ public class GalleriaArteController {
 
 	}
 
-	//si associa una nuova opera alla galleria il cui id è passato nel path
+	//ritorna le opere già associate alla galleria (se presenti) e le opere disponibili per l'associazione
 	@GetMapping("/galleria/{id}/scegliNuovaOpera")
-	public String scegliNuovaOpera(@PathVariable("id") Long id, Model model) {
+	public String scegliOperaDaAssociare(@PathVariable("id") Long id, Model model) {
 		GalleriaArte galleria = this.galleriaService.findById(id);
 		model.addAttribute("galleria", galleria);
 		model.addAttribute("opere", operaService.findOpereNonAssociate());
 		return "admin/opereNonAssociate.html";
 	}
 
+	//si associa una nuova opera alla galleria il cui id è passato nel path
 	@GetMapping("/associaOpera/{idOpera}/{idGalleria}")
-	public String associaNuovaOpera(@PathVariable("idOpera") Long idOpera, 
+	public String associaOpera(@PathVariable("idOpera") Long idOpera, 
+			@PathVariable("idGalleria") Long idGalleria,Model model) {
+		GalleriaArte galleria = this.galleriaService.findById(idGalleria);
+		Opera opera = this.operaService.findById(idOpera);
+		model.addAttribute("galleria", galleria);
+		model.addAttribute("opera", opera);
+		return "admin/associaOperaGalleria.html";
+	}
+	
+	@GetMapping("/confermaAssociazione/{idOpera}/{idGalleria}")
+	public String confermaAssociaOpera(@PathVariable("idOpera") Long idOpera, 
 			@PathVariable("idGalleria") Long idGalleria,Model model) {
 		GalleriaArte galleria = this.galleriaService.findById(idGalleria);
 		Opera opera = this.operaService.findById(idOpera);
 		this.galleriaService.addOpera(galleria, opera);
 		this.operaService.setGalleria(galleria, opera);
 		model.addAttribute("galleria", galleria);
-		model.addAttribute("opere", operaService.findOpereNonAssociate());
-		return "admin/opereNonAssociate.html";
+		return "admin/galleria.html";
 	}
 
 	// METODI PER DELETE

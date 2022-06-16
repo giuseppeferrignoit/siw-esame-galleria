@@ -77,6 +77,7 @@ public class ClienteController {
 
 	@GetMapping("/confermaDeleteCliente/{id}")
 	public String confermaDeleteCliente(@PathVariable("id") Long id, Model model) {
+		this.operaService.removeClienteFromOpere(this.clienteService.findById(id));
 		this.clienteService.deleteById(id);
 		model.addAttribute("clienti", this.clienteService.findAll());
 		return "admin/clienti.html";
@@ -140,10 +141,17 @@ public class ClienteController {
 	@GetMapping("/cliente/{idCliente}/opera/{idOpera}")
 	public String acquistaOpera(@PathVariable("idCliente") Long idCliente,
 			@PathVariable("idOpera") Long idOpera, Model model) {
+		model.addAttribute("cliente", clienteService.findById(idCliente));
+		model.addAttribute("opera", operaService.findById(idOpera));
+		return "admin/confermaAcquistoOpera.html";
+	}
+	
+	@GetMapping("/cliente/{idCliente}/confermaOpera/{idOpera}")
+	public String confermaAcquistoOpera(@PathVariable("idCliente") Long idCliente, 
+			@PathVariable("idOpera") Long idOpera, Model model) {
 		clienteService.acquistaOpera(idCliente, idOpera);
 		model.addAttribute("cliente", clienteService.findById(idCliente));
-		model.addAttribute("opere", operaService.findOpereNonAcquistate());
-		return "admin/acquistaOpera.html";
+		return "admin/cliente.html";
 	}
-
+	
 }

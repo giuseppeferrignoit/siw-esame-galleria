@@ -21,7 +21,7 @@
 			  				th:text="${err}">ERRORE GENERICO</p> 
 			  		</div>
 					<div class="form-item">
-						<div>Via/Piazza: </div>
+						<div>Indirizzo: </div>
 						<div><span><input type="text" th:field="*{via}"/></span>
 						<span th:if="${#fields.hasErrors('via')}" th:errors="*{via}"></span></div>
 					</div>

@@ -13,18 +13,26 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>	
 		<div id="container">	
 			<div id="section">
-				<div><h1>I nostri clienti</h1></div>
-				<ul id="elenco">
-					<li th:each="cliente: ${clienti}">
-						<span>
-							<a th:href="@{'/cliente' + '/' + ${cliente.id}}"
-							th:text="${cliente.nome} + ' ' + ${cliente.cognome}">Rossi</a>
-					   	</span>
-					   	<span>
-					   		<a th:href="@{'/deleteCliente' +'/' + ${cliente.id}}"><strong>ELIMINA</strong></a>
-					   	</span>
-					</li>	   	
-				</ul>
+				<div th:if="${!clienti.empty}" class="section-item">
+					<div><h1>I nostri clienti</h1></div>
+					<ul id="elenco">
+						<li th:each="cliente: ${clienti}">
+							<span>
+								<a th:href="@{'/cliente' + '/' + ${cliente.id}}"
+								th:text="${cliente.nome} + ' ' + ${cliente.cognome}">Rossi</a>
+						   	</span>
+						   	<span>
+						   		<a th:href="@{'/deleteCliente' +'/' + ${cliente.id}}"><strong>ELIMINA</strong></a>
+						   	</span>
+						</li>	   	
+					</ul>
+				</div>
+				<div th:unless="${!clienti.empty}" class="section-item">
+					<div><h1>Non ci sono ancora clienti censiti</h1></div>
+				</div>
+				<div class="section-item">
+					<a id="button" th:href="@{/clienteForm}">Inserisci un nuovo cliente</a>
+				</div>
 			</div>
 			<img src="/images/clienti2.jpg"></img>
 		</div>

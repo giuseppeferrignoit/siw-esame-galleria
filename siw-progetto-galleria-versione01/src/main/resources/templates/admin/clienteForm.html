@@ -17,7 +17,7 @@
 				<form id="form" th:action="@{/cliente}" method="POST" th:object="${cliente}">
 					<h3>Inserisci un nuovo cliente</h3>
 					<div th:if="${#fields.hasGlobalErrors()}">
-			    		<p 	th:each="err : ${#fields.globalErrors()}" 
+			    		<p th:each="err : ${#fields.globalErrors()}" 
 			  				th:text="${err}">ERRORE GENERICO</p> 
 			  		</div>
 					<div class="form-item">

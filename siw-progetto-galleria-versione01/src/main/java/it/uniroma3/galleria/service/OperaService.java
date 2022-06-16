@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.galleria.model.Artista;
+import it.uniroma3.galleria.model.Cliente;
 import it.uniroma3.galleria.model.GalleriaArte;
 import it.uniroma3.galleria.model.Opera;
 import it.uniroma3.galleria.repository.ArtistaRepository;
@@ -102,6 +103,18 @@ public class OperaService {
 				opere.add(opera);
 		}
 		return opere;
+	}
+
+	public void removeClienteFromOpere(Cliente cliente) {
+		List<Opera> opere = this.findAll();
+		for(Opera opera : opere) {
+			if(opera.getCliente() != null) {
+				if(opera.getCliente().equals(cliente)) {
+					opera.setCliente(null);
+					this.save(opera, opera.getArtista());
+				}
+			}
+		}
 	}
 
 }

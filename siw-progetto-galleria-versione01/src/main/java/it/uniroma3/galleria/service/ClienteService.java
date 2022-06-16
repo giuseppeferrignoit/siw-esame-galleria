@@ -81,8 +81,6 @@ public class ClienteService {
 		Cliente cliente = this.findById(idCliente);
 		cliente.setIndirizzo(indirizzo);
 		this.save(cliente);
-	}
-	
-	
+	}	
 }
 
