@@ -50,6 +50,11 @@ public class OperaService {
 		opera.setGallery(galleria);
 	}
 	
+	@Transactional
+	public void setGalleriaNull(GalleriaArte galleria, Opera opera) {
+		opera.setGallery(null);
+	}
+	
 	public Opera findById (Long id) {
 		return operaRepository.findById(id).get();
 	}

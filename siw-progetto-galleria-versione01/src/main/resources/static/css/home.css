@@ -38,7 +38,7 @@
 }
 
 .contacts {
-	height: 35vh;
+	height: 25vh;
 	width: 100%;
 	margin: 0;
 	background-color: #1A7597;
@@ -55,7 +55,7 @@ a .contacts {
 }
 
 .contacts #text-section {
-	padding: 0 130px;
+	padding: 0 100px;
 }
 
 .link {

@@ -26,7 +26,7 @@ import static it.uniroma3.galleria.model.Credenziali.DEFAULT_ROLE;
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * The datasource is automatically injected into the AuthConfiguration (using its getters and setters)
-     * and it is used to access the DB to get the Credentials to perform authentiation and authorization
+     * and it is used to access the DB to get the Credentials to perform authentication and authorization
      */
     @Autowired
     DataSource datasource;
@@ -91,7 +91,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     /**
      * This method defines a "passwordEncoder" Bean.
-     * The passwordEncoder Bean is used to encrypt and decrpyt the Credentials passwords.
+     * The passwordEncoder Bean is used to encrypt and decrypt the Credentials passwords.
      */
     @Bean
     PasswordEncoder passwordEncoder() {

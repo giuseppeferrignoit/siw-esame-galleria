@@ -74,7 +74,7 @@ public class GalleriaArteController {
 
 	// METODI PER LE OPERE DELLA GALLERIA
 
-	//aggiunge l'opera il cui id è passato nel path alla Galleriia
+	//associa l'opera il cui id è passato nel path alla Galleriia
 	@GetMapping("/galleria/{idGalleria}/{idOpera}")
 	public String addOpera(@PathVariable("idGalleria") Long idGalleria,
 			@PathVariable("idOpera") Long idOpera, Model model) {
@@ -87,7 +87,7 @@ public class GalleriaArteController {
 
 	}
 
-	//ritorna le opere già associate alla galleria (se presenti) e le opere disponibili per l'associazione
+	//ritorna le opere disponibili per l'associazione
 	@GetMapping("/galleria/{id}/scegliNuovaOpera")
 	public String scegliOperaDaAssociare(@PathVariable("id") Long id, Model model) {
 		GalleriaArte galleria = this.galleriaService.findById(id);
@@ -117,7 +117,28 @@ public class GalleriaArteController {
 		model.addAttribute("galleria", galleria);
 		return "admin/galleria.html";
 	}
-
+	
+	//si associa una nuova opera alla galleria il cui id è passato nel path
+		@GetMapping("/dissociaOpera/{idOpera}")
+		public String dissociaOpera(@PathVariable("idOpera") Long idOpera, Model model) {			
+			Opera opera = this.operaService.findById(idOpera);
+			GalleriaArte galleria = this.galleriaService.findById(opera.getGallery().getId());
+			model.addAttribute("galleria", galleria);
+			model.addAttribute("opera", opera);
+			return "admin/dissociaOperaGalleria.html";
+		}
+		
+		@GetMapping("/confermaDissociazioneOpera/{idOpera}")
+		public String confermaDisassociazioneOperaOpera(@PathVariable("idOpera") Long idOpera, Model model) {
+			Opera opera = this.operaService.findById(idOpera);
+			GalleriaArte galleria = this.galleriaService.findById(opera.getGallery().getId());
+			this.galleriaService.removeOpera(galleria, opera);
+			this.operaService.setGalleriaNull(galleria, opera);
+			model.addAttribute("galleria", galleria);
+			model.addAttribute("opera", opera);
+			return "admin/galleria.html";
+		}
+	
 	// METODI PER DELETE
 
 	@GetMapping("/confermaDeleteGalleria/{id}")

@@ -3,7 +3,7 @@
 
 	<head>  	
 		<meta charset="ISO-8859-1" />
-	    <title>Artisti</title>
+	    <title>Artisti - admin</title>
 		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
 		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -14,21 +14,23 @@
 		<div id="container">
 			<div id="section">
 				<div th:if="${!artisti.empty}" class="section-item">
-					<div><h1>I nostri artisti</h1></div>	
+					<div class="titoli"><h1>I nostri artisti</h1></div>	
 					<ul id="elenco">
 						<li th:each="artista: ${artisti}">
-							<span>
-								<a th:href="@{'/artista' + '/' + ${artista.id}}"
-								th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
-						   	</span>
-						   	<span>
-						   		<a th:href="@{'/deleteArtista' +'/' + ${artista.id}}"><strong>ELIMINA</strong></a>
-						   	</span>
+							<p class="elemento">
+								<span>
+									<a th:href="@{'/artista' + '/' + ${artista.id}}"
+									th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
+							   	</span>
+							   	<span>
+							   		<a th:href="@{'/deleteArtista' +'/' + ${artista.id}}"><strong  class="eliminazione">ELIMINA</strong></a>
+							   	</span>
+							</p>
 						</li>	   	
 					</ul>
 				</div>
 				<div th:unless="${!artisti.empty}" class="section-item">
-					<div><h1>Non ci sono ancora artisti censiti</h1></div>
+					<div><h2>Non ci sono ancora artisti censiti</h2></div>
 				</div>
 				<div class="section-item">
 					<a id="button" th:href="@{/artistaForm}">Inserisci un nuovo artista</a>

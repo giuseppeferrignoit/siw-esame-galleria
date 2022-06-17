@@ -24,7 +24,7 @@
 					</ul>
 				</div>
 				<div class="section-item" th:if="${!opere.empty}">
-					<h2>Vuoi associare un'opera al cliente <span th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></span>?</h2>
+					<h2>Vuoi effettuare un acquisto di opera per: <span th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></span>?</h2>
 					<ul id="elenco" >
 						<li th:each="opera: ${opere}">
 							<span>
@@ -33,7 +33,7 @@
 						   	</span>
 						   	<span>
 								<a th:href="@{'/cliente' + '/' + ${cliente.id}
-								 + '/opera' +'/' + ${opera.id}}"><strong>ASSOCIA</strong></a> 
+								 + '/opera' +'/' + ${opera.id}}"><strong class="conferma">AQUISTA</strong></a> 
 							</span>
 						</li>	   	
 					</ul>

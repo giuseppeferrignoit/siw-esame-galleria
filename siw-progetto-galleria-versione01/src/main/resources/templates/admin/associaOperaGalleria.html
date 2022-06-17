@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="ISO-8859-1" />
-	    <title>Associa opera</title>
+	    <title>Associa opera a galleria</title>
 		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
 		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,10 +19,10 @@
 					<span>alla galleria </span><span th:text="${galleria.nome}"></span>?</h3></div>
 				<div id="buttons">
 					<div class="bottone">
-						<a th:href="@{'/confermaAssociazione' + '/' + ${opera.id} + '/' + ${galleria.id}}"><strong>CONFERMA</strong></a>
+						<a th:href="@{'/confermaAssociazione' + '/' + ${opera.id} + '/' + ${galleria.id}}"><strong class="verde">CONFERMA</strong></a>
 					</div>
 					<div class="bottone">
-						<a th:href="@{'/galleria' + '/' + ${galleria.id} + '/' + 'scegliNuovaOpera'}" ><strong>ANNULLA</strong></a>
+						<a th:href="@{'/galleria' + '/' + ${galleria.id} + '/' + 'scegliNuovaOpera'}" ><strong class="rosso">ANNULLA</strong></a>
 					</div>
 				</div>
 			</div>

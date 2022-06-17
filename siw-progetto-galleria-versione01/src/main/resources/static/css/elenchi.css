@@ -30,6 +30,10 @@ img {
 	line-height: 1.8;
 }
 
+p.elemento {
+	padding:5px;
+}
+
 a#select {
 	font-size: 15px;
 	text-decoration: underline;
@@ -43,6 +47,8 @@ a:hover#select{
 
 .section-item {
 	margin: 20px 0;
+	padding-bottom: 15px;
+	margin-bottom: 20px;;
 }
 
 #button {
@@ -73,5 +79,43 @@ a:hover#select{
 	border-style: solid;
 	color: white;
 	border-color: #1A7597;
-	border-radius: 3px;
+	border-radius: 5px;
+}
+
+.eliminazione {
+	margin: 15px 15px 0px 0px;
+	font-size: 18px;
+	padding: 2px;
+	border-style: solid;
+	color: red;
+	border-color: red;
+	border-radius: 5px;
+}
+
+.conferma {
+	margin: 15px 15px 0px 0px;
+	font-size: 18px;
+	padding: 2px;
+	border-style: solid;
+	color: green;
+	border-color: green;
+	border-radius: 5px;
+}
+
+.zonaConferme {
+	margin:15px;
+	padding: 3px;
+}
+
+strong.rosso {
+	color: red;
+}
+
+strong.verde {
+	color: green;
+}
+
+.titoli {
+	padding-bottom: 15px;
+	margin:15;
 }

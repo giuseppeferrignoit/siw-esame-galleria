@@ -51,12 +51,7 @@ public class ClienteService {
 		}
 		return clienti;
 	}
-	/*
-	@Transactional
-	public void acquistaOpera(Cliente cliente, Opera opera) {
-		cliente.getOpere().add(opera);
-	}
-	*/
+	
 	// Metodo che risponde ad una validazione del Validator
 	public boolean alreadyExists(Cliente cliente) {
 		return clienteRepository.existsByNomeAndCognomeAndNazionalita

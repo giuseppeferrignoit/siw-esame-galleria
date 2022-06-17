@@ -13,22 +13,25 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>	
 		<div id="container">	
 			<div id="section">
-				<div th:if="${!clienti.empty}" class="section-item">
-					<div><h1>I nostri clienti</h1></div>
+				<div th:if="${!clienti.empty}" class="section-item">					
+					<div class="titoli"><h1>I nostri clienti</h1></div>	
+
 					<ul id="elenco">
 						<li th:each="cliente: ${clienti}">
-							<span>
-								<a th:href="@{'/cliente' + '/' + ${cliente.id}}"
-								th:text="${cliente.nome} + ' ' + ${cliente.cognome}">Rossi</a>
-						   	</span>
-						   	<span>
-						   		<a th:href="@{'/deleteCliente' +'/' + ${cliente.id}}"><strong>ELIMINA</strong></a>
-						   	</span>
+							<p class="elemento">
+								<span>
+									<a th:href="@{'/cliente' + '/' + ${cliente.id}}"
+									th:text="${cliente.nome} + ' ' + ${cliente.cognome}">Rossi</a>
+							   	</span>
+							   	<span>
+							   		<a th:href="@{'/deleteCliente' +'/' + ${cliente.id}}"><strong class="eliminazione">ELIMINA</strong></a>
+							   	</span>
+							</p>
 						</li>	   	
 					</ul>
 				</div>
 				<div th:unless="${!clienti.empty}" class="section-item">
-					<div><h1>Non ci sono ancora clienti censiti</h1></div>
+					<div><h2>Non ci sono ancora clienti censiti</h2></div>
 				</div>
 				<div class="section-item">
 					<a id="button" th:href="@{/clienteForm}">Inserisci un nuovo cliente</a>

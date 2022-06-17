@@ -3,7 +3,7 @@
 
 	<head>  	
 		<meta charset="ISO-8859-1" />
-	    <title>Gallerie</title>
+	    <title>Gallerie - admin</title>
 		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
 		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
@@ -14,21 +14,24 @@
 		<div id="container">
 			<div id="section">
 				<div th:if="${!gallerie.empty}" class="section-item">
-					<div><h1>Le nostre gallerie</h1></div>	
+					<div class="titoli"><h1>Le nostre gallerie</h1></div>	
 					<ul id="elenco">
 						<li th:each="galleria: ${gallerie}">
-							<span>
-								<a th:href="@{'/galleria' + '/' + ${galleria.id}}"
-						   		th:text="${galleria.nome}">Galleria</a>
-						   	</span>
-						   	<span>
-								<a th:href="@{'/deleteGalleria' +'/' + ${galleria.id}}"><strong>ELIMINA</strong></a> 
-							</span>
+													<p class="elemento">
+							<p class="elemento">
+								<span>
+									<a th:href="@{'/galleria' + '/' + ${galleria.id}}"
+							   		th:text="${galleria.nome}">Galleria</a>
+							   	</span>
+							   	<span>
+									<a th:href="@{'/deleteGalleria' +'/' + ${galleria.id}}"><strong  class="eliminazione">ELIMINA</strong></a> 
+								</span>
+							</p>
 						</li>	   	
 					</ul>
 				</div>
 				<div th:unless="${!gallerie.empty}" class="section-item">
-					<div><h1>Non ci sono ancora gallerie censite</h1></div>
+					<div><h2>Non ci sono ancora gallerie censite</h2></div>
 				</div>
 				<div class="section-item">
 					<a id="button" th:href="@{/galleriaForm}">Inserisci una nuova galleria</a>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="ISO-8859-1" />
+	    <title>Dissossocia opera da galleria</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+			
+				<div th:if="${opera.cliente == null}">
+					<div>
+						<h3>Sei sicuro di voler disassociare l'opera 
+						<span th:text="${opera.nome}">Nome opera </span>
+						(<span th:text="${opera.descrizione}">Descrizione </span>)
+						<span>dalla galleria </span><span th:text="${galleria.nome}"></span>?
+						</h3>
+					</div>
+					<div id="buttons">
+						<div class="bottone">
+							<a th:href="@{'/confermaDissociazioneOpera' + '/' + ${opera.id}}"><strong class="verde">CONFERMA</strong></a>
+						</div>
+						<div class="bottone">
+							<a th:href="@{'/galleria' + '/' + ${galleria.id} + '/' + 'opere'}" ><strong class="rosso">ANNULLA</strong></a>
+						</div>
+					</div>
+				</div>
+				<div th:unless="${opera.cliente == null}">
+						<h3>Non è possibile dissociare l'opera: 
+								<span th:text="${opera.nome}">Nome opera </span>
+									(<span th:text="${opera.descrizione}">Descrizione </span>)
+							<p>
+								E' già stata venduta
+							</p>
+						</h3>
+				</div>
+			</div>
+			<img src="/images/vangogh-vasodigirasoli.jpg"></img>
+		</div>	
+	</body>
+</html>

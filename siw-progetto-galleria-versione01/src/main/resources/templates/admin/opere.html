@@ -3,7 +3,7 @@
 
 	<head>  	
 		<meta charset="ISO-8859-1" />
-	    <title>Opere</title>
+	    <title>Opere - admin</title>
 		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
 		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">	  
@@ -14,35 +14,40 @@
 		<div id="container">
 			<div id="section">
 				<div th:if="${!opere.empty}" class="section-item">
-					<div th:if="${galleria != null}"><h2>Le opere della galleria</h2><h1 th:text="${galleria.nome}"></h1></div>
-					<div th:if="${artista != null}"><h2>Le opere dell'artista</h2><h1 th:text="${artista.nome} + ' ' + ${artista.cognome}"></h1></div>
-					<div th:if="${cliente != null}"><h2>Le opere acquistate da</h2><h1 th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></h1></div>
-					<div th:if="${galleria == null && artista == null && cliente == null}"><h1>Le nostre opere</h1></div>
+					<div class="titoli" th:if="${galleria != null}"><h1><span>Le opere della galleria:  </span><span th:text="${galleria.nome}"></span></h1></div>
+					<div class="titoli" th:if="${artista != null}"><h1><span>Le opere dell'artista:  </span><span th:text="${artista.nome} + ' ' + ${artista.cognome}"></span></h1></div>
+					<div class="titoli" th:if="${cliente != null}"><h1><span>Le opere acquistate da:  </span><span th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></span></h1></div>
+					<div class="titoli" th:if="${galleria == null && artista == null && cliente == null}"><h1>Le nostre opere</h1></div>
 					<ul id="elenco">
 						<li th:each="opera: ${opere}">
-							<span>
-								<a th:href="@{'/opera' + '/' + ${opera.id}}"
-						   		th:text="${opera.nome}">Opera</a>
-						   	</span> 
-						   	<span th:if="${opera.cliente != null}">(Venduta)</span>
-						   	<span th:unless="${opera.cliente != null}">(Disponibile)</span>
-						   	<span th:if="${cliente == null}">
-								<a href="#" th:href="@{'/deleteOpera' +'/' + ${opera.id}}"><strong class="elimina">ELIMINA</strong></a> 
-							</span>
+							<p class="elemento">
+								<span>
+									<a th:href="@{'/opera' + '/' + ${opera.id}}"
+							   		th:text="${opera.nome}">Opera</a>
+							   	</span> 
+							   	<span th:if="${opera.cliente != null}">(Venduta)</span>
+							   	<span th:unless="${opera.cliente != null}">(Disponibile)</span>
+							   
+							   	<span th:if="${opera.cliente == null}">
+							   		<span th:if="${opera.gallery == null}">
+										<a href="#" th:href="@{'/deleteOpera' + '/' + ${opera.id}}"><strong class="eliminazione">ELIMINA</strong></a> 
+									</span>
+									<span th:if="${opera.gallery != null}">
+										<a href="#" th:href="@{'/dissociaOpera' + '/' + ${opera.id}}"><strong class="conferma">DISSOCIA DALLA GALLERIA</strong></a>
+									</span> 
+								</span>
+							</p>
 						</li>	   	
 					</ul>
 				</div>
 				<div th:if="${opere.empty && galleria==null && cliente==null && artista==null}">
 					<div class="section-item">
-						<h1>Non ci sono ancora opere censite</h1>
-					</div>
-					<div class="section-item">
-						<a id="button" th:href="@{/newOpera}">Inserisci una nuova opera</a>
+						<h2>Non ci sono ancora opere censite</h2>
 					</div>
 				</div>
 				<div th:if="${opere.empty && galleria!=null}">
 					<div class="section-item">
-						<h1>Non ci sono ancora opere associate alla galleria</h1>
+						<h2>Non ci sono ancora opere associate alla galleria</h2>
 					</div>
 					<div class="section-item">
 						<a id="button" th:href="@{'/galleria' + '/' + ${galleria.id} + '/' + 
@@ -51,21 +56,25 @@
 				</div>
 				<div th:if="${opere.empty && cliente!=null}">
 					<div class="section-item">
-						<h1>Il cliente non ha ancora acquistato nessuna opera</h1>
+						<h2>Il cliente non ha ancora acquistato nessuna opera</h2>
 					</div>
 					<div class="section-item">
 						<a id="button" th:href="@{'/cliente' + '/' + ${cliente.id} + '/' + 
 						'scegliOperaDaAcquistare'}">Acquista una nuova opera</a>
 					</div>
 				</div>
+				
 				<div th:if="${opere.empty && artista!=null}">
 					<div class="section-item">
-						<h1>Non ci sono opere associate all'artista</h1>
+						<h2>Non ci sono opere associate all'artista</h2>
 					</div>
 					<div class="section-item">
 						<a id="button" th:href="@{'/artista' +'/' + ${artista.id} + '/' + 
 						'nuovaOpera'}">Inserisci una nuova opera</a>
 					</div>
+				</div>
+				<div class="section-item">
+					<a id="button" th:href="@{/newOpera}">Inserisci una nuova opera</a>
 				</div>
 			</div>
 			<img src="/images/vangogh-vasodigirasoli.jpg"></img>

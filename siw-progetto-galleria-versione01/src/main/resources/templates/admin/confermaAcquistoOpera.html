@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="ISO-8859-1" />
-	    <title>Acquisto opera</title>
+	    <title>Conferma acquisto opera</title>
 		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
 		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,16 +13,26 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>	
 		<div id="container">
 			<div id="section">
-				<div><h3>Sei sicuro di voler associare l'opera 
-					<span th:text="${opera.nome}">Nome opera </span>
-					(<span th:text="${opera.descrizione}">Descrizione </span>)
-					<span>al cliente </span><span th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></span>?</h3></div>
+				<div>
+					<h3>
+					<p>
+						Sei sicuro di voler associare l'opera:  
+						<span th:text="${opera.nome}">Nome opera </span>
+						(<span th:text="${opera.descrizione}">Descrizione </span>)
+					<p>
+					<p>
+						<span>al cliente:  </span><span th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></span>?
+					</p>
+					</h3>
+				</div>
+				
+				
 				<div id="buttons">
 					<div class="bottone">
-						<a th:href="@{'/cliente' + '/' + ${cliente.id} + '/confermaOpera' + '/' + ${opera.id}}"><strong>CONFERMA</strong></a>
+						<a th:href="@{'/cliente' + '/' + ${cliente.id} + '/confermaOpera' + '/' + ${opera.id}}"><strong class="verde">CONFERMA</strong></a>
 					</div>
 					<div class="bottone">
-						<a th:href="@{'/cliente' + '/' + ${cliente.id} + '/' + 'scegliOperaDaAcquistare'}" ><strong>ANNULLA</strong></a>
+						<a th:href="@{'/cliente' + '/' + ${cliente.id} + '/' + 'scegliOperaDaAcquistare'}" ><strong class="rosso">ANNULLA</strong></a>
 					</div>
 				</div>
 			</div>
