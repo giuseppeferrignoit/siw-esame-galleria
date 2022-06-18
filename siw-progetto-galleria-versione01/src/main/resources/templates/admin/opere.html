@@ -78,7 +78,7 @@
 						'nuovaOpera'}">Inserisci una nuova opera</a>
 					</div>
 				</div>
-				<div th:if="${opere.empty && artista==null}" class="section-item">
+				<div th:if="${!opere.empty && artista==null}" class="section-item">
 					<a id="button" th:href="@{/newOpera}">Inserisci una nuova opera</a>
 				</div>
 			</div>
