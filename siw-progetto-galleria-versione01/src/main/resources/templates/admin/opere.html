@@ -21,7 +21,7 @@
 					<ul id="elenco">
 						<li th:each="opera: ${opere}">
 							<p class="elemento">
-								<span>
+								<span> <strong class="verde">OPERA: </strong>
 									<a th:href="@{'/opera' + '/' + ${opera.id}}"
 							   		th:text="${opera.nome}">Opera</a>
 							   	</span> 
@@ -32,6 +32,11 @@
 							   		<span th:if="${opera.gallery == null}">
 										<a href="#" th:href="@{'/deleteOpera' + '/' + ${opera.id}}"><strong class="eliminazione">ELIMINA</strong></a> 
 									</span>
+									<span th:if="${opera.gallery != null}">
+										<strong class="verde"> - GALLERIA:</strong>
+										<a href="#" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}"
+										th:text="${opera.gallery.nome}">Galleria</a></a>
+									</span> 
 									<span th:if="${opera.gallery != null}">
 										<a href="#" th:href="@{'/dissociaOpera' + '/' + ${opera.id}}"><strong class="conferma">DISSOCIA DALLA GALLERIA</strong></a>
 									</span> 
@@ -73,7 +78,7 @@
 						'nuovaOpera'}">Inserisci una nuova opera</a>
 					</div>
 				</div>
-				<div class="section-item">
+				<div th:if="${opere.empty && artista==null}" class="section-item">
 					<a id="button" th:href="@{/newOpera}">Inserisci una nuova opera</a>
 				</div>
 			</div>
