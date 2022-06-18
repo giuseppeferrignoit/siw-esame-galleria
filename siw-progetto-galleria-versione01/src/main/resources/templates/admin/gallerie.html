@@ -19,7 +19,7 @@
 						<li th:each="galleria: ${gallerie}">
 													<p class="elemento">
 							<p class="elemento">
-								<span>
+								<span><strong class="verde">GALLERIA: </strong>
 									<a th:href="@{'/galleria' + '/' + ${galleria.id}}"
 							   		th:text="${galleria.nome}">Galleria</a>
 							   	</span>
