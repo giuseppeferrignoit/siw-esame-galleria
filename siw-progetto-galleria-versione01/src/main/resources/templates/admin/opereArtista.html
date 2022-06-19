@@ -27,6 +27,11 @@
 							   	</span> 
 							   	<span th:if="${opera.cliente != null}">(Venduta)</span>
 							   	<span th:unless="${opera.cliente != null}">(Disponibile)</span>
+							   	<span th:if="${opera.gallery != null}">
+									<strong class="verde"> - GALLERIA:</strong>
+									<a href="#" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}"
+									th:text="${opera.gallery.nome}">Galleria</a></a>
+								</span> 
 							   	<span th:if="${opera.cliente == null}">
 									<a th:href="@{'/deleteOpera' + '/' + ${opera.id}}"><strong class="eliminazione">ELIMINA</strong></a> 
 								</span>

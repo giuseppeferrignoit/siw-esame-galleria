@@ -22,6 +22,11 @@
 									<a th:href="@{'/opera' + '/' + ${opera.id}}"
 							   		th:text="${opera.nome}">Opera</a>
 							   	</span> 
+							   	<span th:if="${opera.gallery != null}">
+									<strong class="verde"> - GALLERIA:</strong>
+									<a href="#" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}"
+									th:text="${opera.gallery.nome}">Galleria</a></a>
+								</span> 
 							</p>
 						</li>	   	
 					</ul>
