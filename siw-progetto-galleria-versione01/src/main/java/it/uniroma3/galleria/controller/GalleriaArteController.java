@@ -205,7 +205,7 @@ public class GalleriaArteController {
 		GalleriaArte galleria = galleriaService.findById(id);
 		model.addAttribute("opere", galleria.getOpere());
 		model.addAttribute("galleria", galleria);
-		return "admin/opere.html";
+		return "admin/opereGalleria.html";
 	}
 
 	//richiede tutte le opere della galleria  passata nel path per utenti semplici

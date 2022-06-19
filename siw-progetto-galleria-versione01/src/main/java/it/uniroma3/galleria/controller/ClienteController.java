@@ -128,7 +128,7 @@ public class ClienteController {
 	public String opereAcquistate(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("cliente", clienteService.findById(id));
 		model.addAttribute("opere", clienteService.getOpereAcquistate(id));
-		return "admin/opere.html";
+		return "admin/opereCliente.html";
 	}
 	
 	@GetMapping("/cliente/{id}/scegliOperaDaAcquistare")

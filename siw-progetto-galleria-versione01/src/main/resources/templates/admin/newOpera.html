@@ -16,13 +16,15 @@
 				<div><h1>Seleziona uno tra i seguenti artisti oppure inseriscine uno nuovo:</h1></div>	
 				<ul class="section-item" id="elenco">
 					<li th:each="artista: ${artisti}">
-						<span>
-							<a th:href="@{'/artista' + '/' + ${artista.id}}"
-							th:text="${artista.nome} + ' ' + ${artista.cognome}">Paolo Rossi</a>
-					   	</span>
-					   	<span>
-					   		<a th:href="@{'/artista' +'/' + ${artista.id} + '/' + 'nuovaOpera'}"><strong class="conferma">SELEZIONA</strong></a>
-					   	</span>
+						<p class="elemento">
+							<span>
+								<a th:href="@{'/artista' + '/' + ${artista.id}}"
+								th:text="${artista.nome} + ' ' + ${artista.cognome}">Paolo Rossi</a>
+						   	</span>
+						   	<span>
+						   		<a th:href="@{'/artista' +'/' + ${artista.id} + '/' + 'nuovaOpera'}"><strong class="conferma">SELEZIONA</strong></a>
+						   	</span>
+						</p>
 					</li>	   	
 				</ul>
 				<div class="section-item">

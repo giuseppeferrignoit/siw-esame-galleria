@@ -132,7 +132,7 @@ public class ArtistaController {
 		Artista artista = artistaService.findById(id);
 		model.addAttribute("artista", artista);
 		model.addAttribute("opere", artista.getOpere());
-		return "admin/opere.html";
+		return "admin/opereArtista.html";
 	}
 
 	//richiede tutti le opere dell'artista passato nel path per utenti semplici
