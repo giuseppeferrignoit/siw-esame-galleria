@@ -13,23 +13,26 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>	
 		<div id="container">
 			<div id="section">
-				<div class="section-item" th:if="${!cliente.opere.empty}"><h2>Opere gia' acquistate dal cliente:</h2>
-					<ul id="elenco" th:if="${!cliente.opere.empty}">
-						
-						<li th:each="opera: ${cliente.opere}">
-							<span> <strong class="verde">OPERA: </strong>
-							<span>
-								<a th:href="@{'/opera' + '/' + ${opera.id}}"
-						   		th:text="${opera.nome}">Opera</a>
-						   	</span>
-						</li>	   	
-					</ul>
+				<div class="section-item" th:if="${!cliente.opere.empty}">
+					<div class="titoli"><h2>Opere gia' acquistate dal cliente:</h2></div>
+					<div>
+						<ul id="elenco" th:if="${!cliente.opere.empty}">
+							
+							<li th:each="opera: ${cliente.opere}">
+								<span><strong class="verde">OPERA: </strong></span>
+								<span>
+									<a th:href="@{'/opera' + '/' + ${opera.id}}"
+							   		th:text="${opera.nome}">Opera</a>
+							   	</span>
+							</li>	   	
+						</ul>
+					</div>
 				</div>
 				<div class="section-item" th:if="${!opere.empty}">
-					<div>
+					<div class="titoli">
 						<h2>Vuoi effettuare un acquisto di opera per: <span th:text="${cliente.nome} + ' ' + ${cliente.cognome}"></span>?</h2>
 					</div>
-					<div class=section-item>
+					<div>
 						<ul id="elenco" >
 							<li th:each="opera: ${opere}">
 								<p>

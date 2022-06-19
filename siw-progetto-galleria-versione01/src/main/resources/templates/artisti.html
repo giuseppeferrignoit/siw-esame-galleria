@@ -14,15 +14,17 @@
 		<div id="container">
 			<div id="section">
 				<div th:if="${!artisti.empty}" class="section-item">
-					<div><h1>I nostri artisti</h1></div>	
-					<ul id="elenco">
-						<li th:each="artista: ${artisti}">
-							<span>
-								<a th:href="@{'/artistaUtente' + '/' + ${artista.id}}"
-								th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
-						   	</span>
-						</li>	   	
-					</ul>
+					<div class="titoli"><h1>I nostri artisti</h1></div>	
+					<div>
+						<ul id="elenco">
+							<li th:each="artista: ${artisti}">
+								<span>
+									<a th:href="@{'/artistaUtente' + '/' + ${artista.id}}"
+									th:text="${artista.nome} + ' ' + ${artista.cognome}">Rossi</a>
+							   	</span>
+							</li>	   	
+						</ul>
+					</div>
 				</div>
 				<div th:unless="${!artisti.empty}" class="section-item">
 					<div><h2>Non ci sono ancora artisti censiti</h2></div>
