@@ -15,7 +15,9 @@
 			<div id="section">
 				<div class="section-item" th:if="${!cliente.opere.empty}"><h2>Opere gia' acquistate dal cliente:</h2>
 					<ul id="elenco" th:if="${!cliente.opere.empty}">
+						
 						<li th:each="opera: ${cliente.opere}">
+							<span> <strong class="verde">OPERA: </strong>
 							<span>
 								<a th:href="@{'/opera' + '/' + ${opera.id}}"
 						   		th:text="${opera.nome}">Opera</a>
@@ -30,20 +32,26 @@
 					<div class=section-item>
 						<ul id="elenco" >
 							<li th:each="opera: ${opere}">
-								<span> <strong class="verde">OPERA: </strong>
-								<span>
-									<a th:href="@{'/opera' + '/' + ${opera.id}}"
-							   		th:text="${opera.nome}">Opera</a>
-							   	</span>
-							   	<span th:if="${opera.gallery != null}">
-									<strong class="verde"> - GALLERIA:</strong>
-									<a href="#" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}"
-									th:text="${opera.gallery.nome}">Galleria</a></a>
-								</span> 
-							   	<span>
-									<a th:href="@{'/cliente' + '/' + ${cliente.id}
-									 + '/opera' +'/' + ${opera.id}}"><strong class="conferma">AQUISTA</strong></a> 
-								</span>
+								<p>
+									<span> <strong class="verde">OPERA: </strong></span>
+									<span>
+										<a th:href="@{'/opera' + '/' + ${opera.id}}"
+								   		th:text="${opera.nome}">Opera</a>
+								   	</span>
+								   	<span th:if="${opera.gallery != null}">
+										<strong class="verde"> - GALLERIA:</strong>
+										<a href="#" th:href="@{'/galleria' + '/' + ${opera.gallery.id}}"
+										th:text="${opera.gallery.nome}">Galleria</a></a>
+									</span> 
+								   	<span th:if="${opera.gallery != null}">
+										<a th:href="@{'/cliente' + '/' + ${cliente.id}
+										 + '/opera' +'/' + ${opera.id}}"><strong class="conferma">AQUISTA</strong></a> 
+									</span>
+									<span th:unless="${opera.gallery != null}">
+										- Opera non associata ad una galleria!
+									</span>
+								</p>
+								
 							</li>	   	
 						</ul>
 					</div>

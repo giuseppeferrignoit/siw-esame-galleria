@@ -30,10 +30,6 @@ public class GalleriaArte {
 	@OneToMany(mappedBy="gallery")
 	private List<Opera> opere;
 	
-/*
-	@ManyToMany(mappedBy="gallerie")
-	private List<Cliente> clienti;
-*/	
 	//------------------------------------------------------
 
 	public GalleriaArte() {
