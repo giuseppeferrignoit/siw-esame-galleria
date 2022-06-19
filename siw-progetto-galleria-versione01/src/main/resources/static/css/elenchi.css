@@ -87,9 +87,15 @@ a:hover#select{
 	font-size: 18px;
 	padding: 2px;
 	border-style: solid;
-	color: red;
-	border-color: red;
+	color: #b02954;
+	border-color: #b02954;
 	border-radius: 5px;
+}
+
+a:hover .eliminazione {
+	color: white;
+	border-color: white;
+	background-color: #b02954;
 }
 
 .conferma {
@@ -97,9 +103,15 @@ a:hover#select{
 	font-size: 18px;
 	padding: 2px;
 	border-style: solid;
-	color: green;
-	border-color: green;
+	color: #6a8f14;
+	border-color: #6a8f14;
 	border-radius: 5px;
+}
+
+a:hover .conferma {
+	color: white;
+	border-color: white;
+	background-color: #6a8f14;
 }
 
 .zonaConferme {
@@ -108,11 +120,11 @@ a:hover#select{
 }
 
 strong.rosso {
-	color: red;
+	color: #b02954;
 }
 
 strong.verde {
-	color: green;
+	color: #1A7597;
 }
 
 .titoli {

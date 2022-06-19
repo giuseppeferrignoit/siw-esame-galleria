@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" />
+	    <title>Opere Artista - admin</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	  
+	</head> 
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div th:if="${!opere.empty}" class="section-item">
+					<div class="titoli"><h1>
+						<span>Le opere dell'artista: </span>
+						<span th:text="${artista.nome} + ' ' + ${artista.cognome}"></span>
+					</h1></div>
+					<ul id="elenco">
+						<li th:each="opera: ${opere}">
+							<p class="elemento">
+								<span> <strong class="verde">OPERA: </strong>
+									<a th:href="@{'/opera' + '/' + ${opera.id}}"
+							   		th:text="${opera.nome}">Opera</a>
+							   	</span> 
+							   	<span th:if="${opera.cliente != null}">(Venduta)</span>
+							   	<span th:unless="${opera.cliente != null}">(Disponibile)</span>
+							   	<span th:if="${opera.cliente == null}">
+									<a th:href="@{'/deleteOpera' + '/' + ${opera.id}}"><strong class="eliminazione">ELIMINA</strong></a> 
+								</span>
+							</p>
+						</li>	   	
+					</ul>
+				</div>				
+				<div th:unless="${!opere.empty}">
+					<div class="section-item">
+						<h2>Non ci sono opere associate all'artista</h2>
+					</div>
+				</div>
+				<div class="section-item">
+						<a id="button" th:href="@{'/artista' +'/' + ${artista.id} + '/' + 
+						'nuovaOpera'}">Inserisci una nuova opera</a>
+				</div>
+			</div>
+			<img src="/images/vangogh-vasodigirasoli.jpg"></img>
+		</div>
+	</body>
+
+</html>

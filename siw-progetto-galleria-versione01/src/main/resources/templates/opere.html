@@ -16,7 +16,7 @@
 				<div th:if="${!opere.empty}" class="section-item">
 					<div class="titoli" th:if="${galleria != null}"><h1><span>Le opere della galleria: </span><span th:text="${galleria.nome}"></span></h1></div>
 					<div th:if="${artista != null}"><h1><span>Le opere dell'artista: </span><span th:text="${artista.nome} + ' ' + ${artista.cognome}"></span></h1></div>
-					
+					<div th:if="${artista==null && galleria==null}"><h1>Le nostre opere</h1></div>
 					<ul id="elenco">
 						<li th:each="opera: ${opere}">
 							<span>

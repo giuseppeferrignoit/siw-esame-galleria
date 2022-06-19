@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  	
+		<meta charset="ISO-8859-1" />
+	    <title>Opere Galleria - admin</title>
+		<link rel="stylesheet" th:href="@{/css/my-style.css}"/>
+		<link rel="stylesheet" th:href="@{/css/elenchi.css}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">	  
+	</head> 
+	
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>	
+		<div id="container">
+			<div id="section">
+				<div th:if="${!opere.empty}" class="section-item">
+					<div class="titoli"><h1><span>Le opere della galleria:  </span><span th:text="${galleria.nome}"></span></h1></div>
+					<ul id="elenco">
+						<li th:each="opera: ${opere}">
+							<p class="elemento">
+								<span> <strong class="verde">OPERA: </strong>
+									<a th:href="@{'/opera' + '/' + ${opera.id}}"
+							   		th:text="${opera.nome}">Opera</a>
+							   	</span> 
+							   	<span th:if="${opera.cliente != null}">(Venduta)</span>
+							   	<span th:unless="${opera.cliente != null}">(Disponibile)</span>
+							   
+							   	<span th:if="${opera.cliente == null}">
+									<span>
+										<a href="#" th:href="@{'/dissociaOpera' + '/' + ${opera.id}}"><strong class="conferma">DISSOCIA DALLA GALLERIA</strong></a>
+									</span> 
+								</span>
+							</p>
+						</li>	   	
+					</ul>
+				</div>
+				<div th:unless="${!opere.empty}">
+					<div class="section-item">
+						<h2>Non ci sono ancora opere associate alla galleria</h2>
+					</div>
+				</div>
+				<div class="section-item">
+						<a id="button" th:href="@{'/galleria' + '/' + ${galleria.id} + '/' + 
+						'scegliNuovaOpera'}">Associa una nuova opera</a>
+				</div>
+			</div>
+			<img src="/images/vangogh-vasodigirasoli.jpg"></img>
+		</div>
+	</body>
+
+</html>
